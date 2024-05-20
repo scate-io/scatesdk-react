@@ -1,5 +1,6 @@
 package com.scatesdkreact;
 
+
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
@@ -10,7 +11,7 @@ import com.facebook.react.module.annotations.ReactModule;
 
 @ReactModule(name = ScatesdkReactModule.NAME)
 public class ScatesdkReactModule extends ReactContextBaseJavaModule {
-  public static final String NAME = "ScatesdkReact";
+  public static final String NAME = "ScateSDK";
 
   public ScatesdkReactModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -22,11 +23,29 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
     return NAME;
   }
 
-
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
   @ReactMethod
-  public void multiply(double a, double b, Promise promise) {
-    promise.resolve(a * b);
+  public void Init(String appID, Promise promise){
+    // not implemented yet
+    promise.resolve("");
   }
+
+  @ReactMethod
+  public void SetAdid(String adid, Promise promise){
+    // not implemented yet
+    promise.resolve("");
+  }
+
+  @ReactMethod
+  public void Event(String name, Promise promise){
+    // not implemented yet
+    promise.resolve("");
+  }
+
+  @ReactMethod
+  public void EventWithValue(String name, String customValue, Promise promise){
+    // not implemented yet
+    promise.resolve("");
+  }
+
+
 }
