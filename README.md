@@ -14,7 +14,7 @@ import { ScateSDK } from 'scatesdk-react';
 
 // ...
 // It's better to initialize the SDK after Adjust SDK 
-ScateSDK.init('your app id');
+ScateSDK.Init('your app id');
 
 // make sure to set adid from Adjust SDK
 let adid = Adjust.adid()
