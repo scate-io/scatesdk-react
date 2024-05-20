@@ -1,13 +1,15 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'scatesdk-react';
+import { ScateSDK } from 'scatesdk-react';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    ScateSDK.Init('test-scate-sdk');
+    ScateSDK.SetAdid('test-adid');
+    ScateSDK.Event('test-event');
   }, []);
 
   return (

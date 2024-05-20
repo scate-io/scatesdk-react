@@ -1,7 +1,3 @@
-# scatesdk-react
-
-Scate SDK is made for developers to integrate Scate's services into their apps. Please visit https://www.scate.io for more information.
-
 ## Installation
 
 ```sh
@@ -10,22 +6,36 @@ npm install scatesdk-react
 
 ## Usage
 
+### Initialize the SDK
+
 ```js
-import { multiply } from 'scatesdk-react';
+import { ScateSDK } from 'scatesdk-react';
+
 
 // ...
+// It's better to initialize the SDK after Adjust SDK 
+ScateSDK.init('your app id');
 
-const result = await multiply(3, 7);
+// make sure to set adid from Adjust SDK
+let adid = Adjust.adid()
+ScateSDK.SetAdid(adid);
+
 ```
 
-## Contributing
+### Send Events
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+To send events, you can use the following code:
 
-## License
+```js
+    
+ScateSDK.Event("button_clicked");
 
-MIT
+```
 
----
+### Send Events with Additional Data
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+```js
+
+ScateSDK.EventWithValue("button_clicked", "subscribe_btn");
+
+```

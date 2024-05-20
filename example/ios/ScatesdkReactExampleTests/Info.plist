@@ -20,5 +20,7 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>deliver personalized app experience</string>
 </dict>
 </plist>
