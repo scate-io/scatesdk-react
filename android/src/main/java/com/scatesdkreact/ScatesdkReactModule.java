@@ -1,6 +1,5 @@
 package com.scatesdkreact;
 
-
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
@@ -11,41 +10,58 @@ import com.facebook.react.module.annotations.ReactModule;
 
 @ReactModule(name = ScatesdkReactModule.NAME)
 public class ScatesdkReactModule extends ReactContextBaseJavaModule {
-  public static final String NAME = "ScateSDK";
 
-  public ScatesdkReactModule(ReactApplicationContext reactContext) {
-    super(reactContext);
-  }
+    public static final String NAME = "ScateSDK";
 
-  @Override
-  @NonNull
-  public String getName() {
-    return NAME;
-  }
+    public ScatesdkReactModule(ReactApplicationContext reactContext) {
+        super(reactContext);
+    }
 
-  @ReactMethod
-  public void Init(String appID, Promise promise){
-    // not implemented yet
-    promise.resolve("");
-  }
+    @Override
+    @NonNull
+    public String getName() {
+        return NAME;
+    }
 
-  @ReactMethod
-  public void SetAdid(String adid, Promise promise){
-    // not implemented yet
-    promise.resolve("");
-  }
+    @ReactMethod
+    public void Init(String appID, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
 
-  @ReactMethod
-  public void Event(String name, Promise promise){
-    // not implemented yet
-    promise.resolve("");
-  }
+    @ReactMethod
+    public void SetAdid(String adid, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
 
-  @ReactMethod
-  public void EventWithValue(String name, String customValue, Promise promise){
-    // not implemented yet
-    promise.resolve("");
-  }
+    @ReactMethod
+    public void Event(String name, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
 
+    @ReactMethod
+    public void EventWithValue(String name, String customValue, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
 
+    @ReactMethod
+    public void GetRemoteConfig(String key, String defaultValue, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
+
+    @ReactMethod
+    public void AddListener(String name, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
+
+    @ReactMethod
+    public void RemoveListener(String name, Promise promise) {
+        // not implemented yet
+        promise.resolve("");
+    }
 }
