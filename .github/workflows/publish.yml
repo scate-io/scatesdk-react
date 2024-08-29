@@ -19,12 +19,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Specify the Node.js version you need
+          node-version: "21" # Specify the Node.js version you need
           registry-url: "https://registry.npmjs.org/"
 
       - name: Get version from tag
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Check out the default branch
+        run: git checkout main
 
       - name: Update version in package.json
         run: npm version $VERSION --no-git-tag-version
