@@ -43,9 +43,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the SDK
-        run: npm run build
-
       - name: Publish to npm
         run: npm publish
         env:
