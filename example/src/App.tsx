@@ -8,9 +8,6 @@ export default function App() {
 
   React.useEffect(() => {
     const fetchData = async () => {
-
-
-
       ScateSDK.AddListener(
         ScateEvents.REMOTE_CONFIG_READY,
         async (event: any) => {
