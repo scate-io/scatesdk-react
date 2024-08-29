@@ -6364,7 +6364,7 @@ safe-regex-test@^1.0.3:
 "safer-buffer@>= 2.1.2 < 3", "safer-buffer@>= 2.1.2 < 3.0.0":
   version "2.1.2"
 
-"scatesdk-react-example@file:/Users/cisemcaglayan/Documents/GitHub/scatesdk-react/example":
+"scatesdk-react-example@file:/Users/eminkura/Documents/GitHub/ScateSDKWrappers/scatesdk-react/example":
   version "0.0.1"
   resolved "file:example"
   dependencies:

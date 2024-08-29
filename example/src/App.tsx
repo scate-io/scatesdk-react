@@ -4,15 +4,12 @@ import { StyleSheet, View, Text } from 'react-native';
 import { ScateEvents, ScateSDK } from 'scatesdk-react';
 
 export default function App() {
-  const [result] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
     const fetchData = async () => {
-      ScateSDK.Init('uw2YK');
-      ScateSDK.SetAdid('test-adid');
-      ScateSDK.Event('test-event');
 
-      console.log('Local', await ScateSDK.GetRemoteConfig('test', 'default'));
+
 
       ScateSDK.AddListener(
         ScateEvents.REMOTE_CONFIG_READY,
@@ -22,8 +19,20 @@ export default function App() {
             'Remote',
             await ScateSDK.GetRemoteConfig('test', 'default')
           );
+          let r = await ScateSDK.GetRemoteConfig('test', 'default');
+          // set state
+          setResult(r);
         }
       );
+
+      ScateSDK.Init('uw2YK');
+      ScateSDK.SetAdid('test-adid');
+      ScateSDK.Event('test-event');
+
+      console.log('Local', await ScateSDK.GetRemoteConfig('test', 'default'));
+
+      let r = await ScateSDK.GetRemoteConfig('test', 'default');
+      setResult(r);
 
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY, '1');
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
