@@ -1164,8 +1164,8 @@ PODS:
     - React-logger (= 0.74.1)
     - React-perflogger (= 0.74.1)
     - React-utils (= 0.74.1)
-  - ScateSDK (0.0.1)
-  - scatesdk-react (0.1.0):
+  - ScateSDK (0.3.26)
+  - scatesdk-react (0.3.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1185,7 +1185,7 @@ PODS:
     - React-utils
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScateSDK
+    - ScateSDK (= 0.3.26)
     - Yoga
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
@@ -1421,8 +1421,8 @@ SPEC CHECKSUMS:
   React-runtimescheduler: e2152ed146b6a35c07386fc2ac4827b27e6aad12
   React-utils: 3285151c9d1e3a28a9586571fc81d521678c196d
   ReactCommon: f42444e384d82ab89184aed5d6f3142748b54768
-  ScateSDK: 89488c5236213683e4bf4fc9b58977af8d066e85
-  scatesdk-react: c0d77fecea8cd293673d6330c0b2d479d75ae43b
+  ScateSDK: 6d8b12ddd3f189d881aa0817133fd722aa0215ed
+  scatesdk-react: 1c217f4b087f83da5c369e5d7a8b78bfb2be0cef
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 348f8b538c3ed4423eb58a8e5730feec50bce372
 
