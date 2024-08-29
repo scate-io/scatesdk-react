@@ -1,0 +1,48 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - "v*" # Triggers the workflow on any tag that starts with 'v'
+
+jobs:
+  publish:
+    runs-on: macos-latest # Use macOS as the runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }} # Use the repository's GITHUB_TOKEN to authenticate
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Specify the Node.js version you need
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Update version in package.json
+        run: npm version $VERSION --no-git-tag-version
+
+      - name: Commit version changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore: update version to $VERSION from tag"
+          git push origin HEAD
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the SDK
+        run: npm run build
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
