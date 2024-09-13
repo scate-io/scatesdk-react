@@ -2,6 +2,9 @@ buildscript {
   repositories {
     google()
     mavenCentral()
+    maven {
+      url "https://europe-west1-maven.pkg.dev/mavenrepo-433814/scatecoresdk-android"
+    }
   }
 
   dependencies {
@@ -74,6 +77,9 @@ android {
 repositories {
   mavenCentral()
   google()
+  maven {
+    url "https://europe-west1-maven.pkg.dev/mavenrepo-433814/scatecoresdk-android"
+  }
 }
 
 
@@ -82,5 +88,6 @@ dependencies {
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
+  implementation 'com.scate:scatesdk:0.3.10'
 }
 

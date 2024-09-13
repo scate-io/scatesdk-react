@@ -4,6 +4,21 @@
 npm install scatesdk-react
 ```
 
+## Android Integration
+
+To ensure that the ScateSDK works properly on Android, you need to add the Maven repository to your build.gradle file.
+
+In your project's android/build.gradle file, add the following Maven repository:
+
+```
+repositories {
+        // Other repositories
+        maven {
+            url "https://europe-west1-maven.pkg.dev/mavenrepo-433814/scatecoresdk-android"
+        }
+    }
+```   
+
 ## Usage
 
 ### Initialize the SDK
@@ -49,7 +64,7 @@ ScateSDK.AddListener(ScateEvents.REMOTE_CONFIG_READY, (event) => {});
 ### Remove Listener
 
 ```js
-ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY, 1); //Listener id
+ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
 ```
 
 ### Clean Listeners
