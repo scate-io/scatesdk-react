@@ -24,7 +24,7 @@ export enum ScateEvents {
 }
 
 export class ScateSDK {
-  private static listeners: Map<string, Map<string, Function>> = new Map();
+  private static listeners: Map<string, Function> = new Map();
 
   public static Init(appID: string): Promise<void> {
     return _ScateSDK.Init(appID);
@@ -52,41 +52,36 @@ export class ScateSDK {
     return _ScateSDK.GetRemoteConfig(key, defaultValue);
   }
 
-  public static HandleEvent = (name: string, event: any) => {
-    const listeners = this.listeners.get(name);
-    if (listeners) {
-      listeners.forEach((listener) => {
-        listener(event); // Pass event data to listeners
-      });
+  public static HandleEvent(name: string, event: any) {
+    const listener = this.listeners.get(name);
+    console.log(event);
+    if (listener) {
+      listener(event["data"]["remoteConfigFetched"]); 
     }
-  };
-
-  public static AddListener(name: string, listener: Function) {
-    const listenerId = Date.now().toString(); // Create unique listener ID based on current timestamp
-    if (!this.listeners.has(name)) {
-      this.listeners.set(name, new Map());
-      _ScateSDK.AddListener(name); // Register native listener
-      eventEmitter.addListener(name, (event) => this.HandleEvent(name, event));
-    }
-    this.listeners.get(name)?.set(listenerId, listener); // Store listener with ID
-    return listenerId; // Return the listener ID
   }
 
-  public static RemoveListener(name: string, listenerId: string) {
-    const listeners = this.listeners.get(name);
-    if (listeners && listeners.has(listenerId)) {
-      listeners.delete(listenerId); // Remove listener from map
-      if (listeners.size === 0) {
-        this.listeners.delete(name); // Remove entire map entry if no listeners remain
-        _ScateSDK.RemoveListener(name); // Unregister native listener
+  public static AddListener(name: string, listener: Function) {
+    if (!this.listeners.has(name)) {
+      _ScateSDK.AddListener(name); 
+      eventEmitter.addListener(name, (event) => this.HandleEvent(name, event));
+    }
+    this.listeners.set(name, listener);
+  }
+
+  public static RemoveListener(name: string) {
+    if (this.listeners.has(name)) {
+      this.listeners.delete(name); 
+      if (this.listeners.size === 0) {
+        _ScateSDK.RemoveListener(name);
       }
     }
   }
 
   public static ClearListeners(name: string) {
-    this.listeners.delete(name); // Remove all listeners for a given event
-    _ScateSDK.RemoveListener(name); // Unregister native listener
+    this.listeners.delete(name); 
+    _ScateSDK.RemoveListener(name); 
   }
 }
+
 
 export default ScateSDK;
