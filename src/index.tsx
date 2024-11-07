@@ -56,13 +56,13 @@ export class ScateSDK {
     const listener = this.listeners.get(name);
     console.log(event);
     if (listener) {
-      listener(event["data"]["remoteConfigFetched"]); 
+      listener(event['data']['remoteConfigFetched']);
     }
   }
 
   public static AddListener(name: string, listener: Function) {
     if (!this.listeners.has(name)) {
-      _ScateSDK.AddListener(name); 
+      _ScateSDK.AddListener(name);
       eventEmitter.addListener(name, (event) => this.HandleEvent(name, event));
     }
     this.listeners.set(name, listener);
@@ -70,7 +70,7 @@ export class ScateSDK {
 
   public static RemoveListener(name: string) {
     if (this.listeners.has(name)) {
-      this.listeners.delete(name); 
+      this.listeners.delete(name);
       if (this.listeners.size === 0) {
         _ScateSDK.RemoveListener(name);
       }
@@ -78,10 +78,117 @@ export class ScateSDK {
   }
 
   public static ClearListeners(name: string) {
-    this.listeners.delete(name); 
-    _ScateSDK.RemoveListener(name); 
+    this.listeners.delete(name);
+    _ScateSDK.RemoveListener(name);
+  }
+
+  public static OnboardingStart() {
+    return _ScateSDK.OnboardingStart();
+  }
+
+  public static OnboardingStep(step: string) {
+    return _ScateSDK.OnboardingStep(step);
+  }
+
+  public static OnboardingFinish() {
+    return _ScateSDK.OnboardingFinish();
+  }
+
+  public static LoginSuccess(source: string) {
+    return _ScateSDK.LoginSuccess(source);
+  }
+
+  public static InterstitialAdShown() {
+    return _ScateSDK.InterstitialAdShown();
+  }
+
+  public static InterstitialAdClosed() {
+    return _ScateSDK.InterstitialAdClosed();
+  }
+
+  public static RewardedAdShown() {
+    return _ScateSDK.RewardedAdShown();
+  }
+
+  public static RewardedAdClosed() {
+    return _ScateSDK.RewardedAdClosed();
+  }
+
+  public static RewardedAdClaimed() {
+    return _ScateSDK.RewardedAdClaimed();
+  }
+
+  public static BannerAdShown() {
+    return _ScateSDK.BannerAdShown();
+  }
+
+  public static NotificationPermissionGranted() {
+    return _ScateSDK.NotificationPermissionGranted();
+  }
+
+  public static NotificationPermissionDenied() {
+    return _ScateSDK.NotificationPermissionDenied();
+  }
+
+  public static LocationPermissionGranted() {
+    return _ScateSDK.LocationPermissionGranted();
+  }
+
+  public static LocationPermissionDenied() {
+    return _ScateSDK.LocationPermissionDenied();
+  }
+
+  public static ATTPromptShown() {
+    return _ScateSDK.ATTPromptShown();
+  }
+
+  public static ATTPermissionGranted() {
+    return _ScateSDK.ATTPermissionGranted();
+  }
+
+  public static ATTPermissionDenied() {
+    return _ScateSDK.ATTPermissionDenied();
+  }
+
+  public static PaywallShown(paywall: string) {
+    return _ScateSDK.PaywallShown(paywall);
+  }
+
+  public static PaywallClosed(paywall: string) {
+    return _ScateSDK.PaywallClosed(paywall);
+  }
+
+  public static PaywallAttempted(paywall: string) {
+    return _ScateSDK.PaywallAttempted(paywall);
+  }
+
+  public static PaywallPurchased(paywall: string) {
+    return _ScateSDK.PaywallPurchased(paywall);
+  }
+
+  public static PaywallCancelled(paywall: string) {
+    return _ScateSDK.PaywallCancelled(paywall);
+  }
+
+  public static TabClicked(tab: string) {
+    return _ScateSDK.TabClicked(tab);
+  }
+
+  public static FeatureClicked(feature: string) {
+    return _ScateSDK.FeatureClicked(feature);
+  }
+
+  public static DailyStreakShown() {
+    return _ScateSDK.DailyStreakShown();
+  }
+
+  public static DailyStreakClaimed() {
+    return _ScateSDK.DailyStreakClaimed();
+  }
+
+  public static DailyStreakClosed() {
+    return _ScateSDK.DailyStreakClosed();
   }
 }
-
 
 export default ScateSDK;
