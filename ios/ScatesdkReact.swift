@@ -3,7 +3,13 @@ import ScateSDK
 @objc(ScateSDK)
 class ScateSDK: RCTEventEmitter {
   override func supportedEvents() -> [String]! {
-      return [ScateCoreSDK.RemoteConfigsReady.rawValue]
+      return [ScateCoreSDK.RemoteConfigsReady.rawValue,
+      ScateCoreSDK.PaidProductClicked.rawValue,
+      ScateCoreSDK.OnboardingScreensFinished.rawValue,
+      ScateCoreSDK.PaywallScreenClosed.rawValue,
+      ScateCoreSDK.OnboardingScreenClosed.rawValue,
+      ScateCoreSDK.PaywallScreenFinished.rawValue,
+      ScateCoreSDK.RestorePurchaseClicked.rawValue]
   }
 
   @objc(Init:withResolver:withRejecter:)
@@ -233,6 +239,30 @@ class ScateSDK: RCTEventEmitter {
   @objc(DailyStreakClosed:withRejecter:)
   func DailyStreakClosed(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.DailyStreakClosed()
+    resolve(nil)
+  }
+
+   @objc(ShowOnboarding:withResolver:withRejecter:)
+  func ShowOnboarding(jsonString: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ShowOnboarding(jsonString: jsonString)
+    resolve(nil)
+  }
+
+  @objc(ShowPaywall:withResolver:withRejecter:)
+  func ShowPaywall(jsonString: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ShowPaywall(jsonString: jsonString)
+    resolve(nil)
+  }
+
+  @objc(CloseOnboarding:withRejecter:)
+  func CloseOnboarding(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.CloseOnboarding()
+    resolve(nil)
+  }
+
+  @objc(ClosePaywall:withRejecter:)
+  func ClosePaywall(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ClosePaywall()
     resolve(nil)
   }
 }
