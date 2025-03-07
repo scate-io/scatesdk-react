@@ -390,4 +390,28 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
       promise.reject("DailyStreakClosed", e);
     }
   }
+
+  @ReactMethod
+  public void ShowOnboarding(String jsonString, Promise promise) {
+    // Empty implementation
+    promise.resolve(null);
+  }
+
+  @ReactMethod
+  public void ShowPaywall(String jsonString, Promise promise) {
+    // Empty implementation
+    promise.resolve(null);
+  }
+
+  @ReactMethod
+  public void CloseOnboarding(Promise promise) {
+    // Empty implementation
+    promise.resolve(null);
+  }
+
+  @ReactMethod
+  public void ClosePaywall(Promise promise) {
+    // Empty implementation
+    promise.resolve(null);
+  }
 }
