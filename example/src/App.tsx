@@ -264,7 +264,9 @@ export default function App() {
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
 
-      ShowOnboarding();
+      //ShowOnboarding();
+      
+      ScateSDK.ShowEventList();
     };
 
     fetchData();

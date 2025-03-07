@@ -232,6 +232,10 @@ export class ScateSDK {
   public static CloseOnboarding() {
     return _ScateSDK.CloseOnboarding();
   }
+
+  public static ShowEventList() {
+    return _ScateSDK.ShowEventList();
+  }
 }
 
 export default ScateSDK;

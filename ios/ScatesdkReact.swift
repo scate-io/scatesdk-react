@@ -265,4 +265,10 @@ class ScateSDK: RCTEventEmitter {
     ScateCoreSDK.ClosePaywall()
     resolve(nil)
   }
+
+  @objc(ShowEventList:withRejecter:)
+  func ShowEventList(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ShowEventList()
+    resolve(nil)
+  }
 }

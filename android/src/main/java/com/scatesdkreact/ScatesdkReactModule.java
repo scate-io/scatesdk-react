@@ -414,4 +414,10 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
     // Empty implementation
     promise.resolve(null);
   }
+
+   @ReactMethod
+  public void ShowEventList(Promise promise) {
+    // Empty implementation
+    promise.resolve(null);
+  }
 }

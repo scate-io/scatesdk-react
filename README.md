@@ -142,3 +142,9 @@ ScateSDK.DailyStreakShown();
 ScateSDK.DailyStreakClaimed();
 ScateSDK.DailyStreakClosed();
 ```
+
+## Event List Screen Function (IOS Only)
+
+```js
+ScateSDK.ShowEventList();
+```
