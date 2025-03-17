@@ -148,3 +148,43 @@ ScateSDK.DailyStreakClosed();
 ```js
 ScateSDK.ShowEventList();
 ```
+
+## Onboarding And Paywall Screen Functions and Events
+
+## Show Paywall Screen
+
+```js
+ScateSDK.ShowPaywall('jsonString');
+```
+
+## Close Paywall Screen
+
+```js
+ScateSDK.ClosePaywall();
+```
+
+## Show Onboarding Screen
+
+```js
+ScateSDK.ShowOnboarding('jsonString');
+```
+
+## Close Onboarding Screen
+
+```js
+ScateSDK.CloseOnboarding();
+```
+
+## Paywall And Onboarding Screen Events
+
+```js
+ScateSDK.AddListener(
+  ScateEvents.ONBOARDING_SCREENS_FINISHED,
+  (identifier) => {}
+);
+ScateSDK.AddListener(ScateEvents.PAYWALL_SCREEN_FINISHED, (identifier) => {});
+ScateSDK.AddListener(ScateEvents.PAID_PRODUCT_CLICKED, (identifier) => {});
+ScateSDK.AddListener(ScateEvents.PAYWALL_SCREEN_CLOSED, (success) => {});
+ScateSDK.AddListener(ScateEvents.ONBOARDING_SCREEN_CLOSED, (success) => {});
+ScateSDK.AddListener(ScateEvents.RESTORE_PURCHASE_CLICKED, (success) => {});
+```
