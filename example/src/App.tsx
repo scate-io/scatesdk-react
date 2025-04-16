@@ -8,7 +8,6 @@ export default function App() {
   const [success, setSuccess] = React.useState<boolean>(false);
 
   const ShowPaywall = () => {
-
     //For media you can also use image path like this
     //const imagePath = "/path/to/image.jpg";
     //const fileUrl = `file://${imagePath}`;
@@ -29,6 +28,9 @@ export default function App() {
           badgeUnselectedColor: '#587BF6',
           selectedBorderColor: '#EA43FB',
           price: '$Price1',
+          badgeTextColor: '#ffffff',
+          titleColor: '#ffffff',
+          priceColor: '#ffffff',
         },
         {
           tagUnselectedColor: '#587BF6',
@@ -44,6 +46,10 @@ export default function App() {
           selectedBackgroundColor: '#22264B',
           selectedBorderColor: '#EA43FB',
           tagText: 'Tag2',
+          badgeTextColor: '#ffffff',
+          titleColor: '#ffffff',
+          priceColor: '#ffffff',
+          tagTextColor: '#ffffff',
         },
         {
           descriptionText: 'Description',
@@ -54,6 +60,9 @@ export default function App() {
           selectedBorderColor: '#EA43FB',
           unselectedBorderColor: '#587BF6',
           title: '[Product]',
+          titleColor: '#ffffff',
+          priceColor: '#ffffff',
+          descriptionTextColor: '#ffffff',
         },
       ],
       selectedPaidProduct: 'Identifier2',
@@ -62,7 +71,15 @@ export default function App() {
       privacyPolicy: 'https://www.google.com/',
       footNote: 'Auto Renewable. Cancel Anytime.',
       backgroundColor: '#000000',
-      actionButtonColor: '#5466c1',
+      actionButtonColor1: '#587BF6',
+      actionButtonColor2: '#2C58F3',
+      headingColor: '#ffffff',
+      buttonTitleColor: '#ffffff',
+      termsOfUseColor: '#ffffff',
+      footNoteColor: '#ffffff',
+      restoreButtonColor: '#ffffff',
+      privacyPolicyColor: '#ffffff',
+      detailsColor: '#ffffff',
     };
 
     const jsonString = JSON.stringify(paywallData);
@@ -71,7 +88,6 @@ export default function App() {
   };
 
   const ShowOnboarding = () => {
-
     //For media you can also use image path like this
     //const imagePath = "/path/to/image.jpg";
     //const fileUrl = `file://${imagePath}`;
@@ -86,8 +102,12 @@ export default function App() {
         paidProducts: [],
         title: '[App Name]',
         backgroundColor: '#000000',
-        actionButtonColor: '#2C58F3',
         detailsColor: '#a62893',
+        actionButtonColor1: '#587BF6',
+        actionButtonColor2: '#2C58F3',
+        titleColor: '#ffffff',
+        headingColor: '#ffffff',
+        buttonTitleColor: '#ffffff',
       },
       {
         type: 'basic',
@@ -98,8 +118,12 @@ export default function App() {
         paidProducts: [],
         title: '[App Name]',
         backgroundColor: '#000000',
-        actionButtonColor: '#2C58F3',
         detailsColor: '#a62893',
+        actionButtonColor1: '#587BF6',
+        actionButtonColor2: '#2C58F3',
+        titleColor: '#ffffff',
+        headingColor: '#ffffff',
+        buttonTitleColor: '#ffffff',
       },
       {
         type: 'paywall',
@@ -119,6 +143,9 @@ export default function App() {
             badgeUnselectedColor: '#587BF6',
             selectedBorderColor: '#EA43FB',
             price: '$Price1',
+            badgeTextColor: '#ffffff',
+            titleColor: '#ffffff',
+            priceColor: '#ffffff',
           },
           {
             tagUnselectedColor: '#587BF6',
@@ -134,6 +161,10 @@ export default function App() {
             selectedBackgroundColor: '#22264B',
             selectedBorderColor: '#EA43FB',
             tagText: 'Tag2',
+            badgeTextColor: '#ffffff',
+            titleColor: '#ffffff',
+            priceColor: '#ffffff',
+            tagTextColor: '#ffffff',
           },
           {
             descriptionText: 'Description',
@@ -144,6 +175,9 @@ export default function App() {
             selectedBorderColor: '#EA43FB',
             unselectedBorderColor: '#587BF6',
             title: '[Product]',
+            titleColor: '#ffffff',
+            priceColor: '#ffffff',
+            descriptionTextColor: '#ffffff',
           },
         ],
         selectedPaidProduct: 'Identifier2',
@@ -152,8 +186,16 @@ export default function App() {
         title: '[App Name]',
         footNote: 'Auto Renewable, Cancel Anytime',
         backgroundColor: '#000000',
-        actionButtonColor: '#2C58F3',
+        actionButtonColor1: '#587BF6',
+        actionButtonColor2: '#2C58F3',
         detailsColor: '#a62893',
+        titleColor: '#ffffff',
+        headingColor: '#ffffff',
+        buttonTitleColor: '#ffffff',
+        termsOfUseColor: '#ffffff',
+        footNoteColor: '#ffffff',
+        restoreButtonColor: '#ffffff',
+        privacyPolicyColor: '#ffffff',
       },
     ];
 
@@ -175,7 +217,8 @@ export default function App() {
           let r = await ScateSDK.GetRemoteConfig('test', 'default');
           // set state
           setResult(r);
-          setSuccess(success);        }
+          setSuccess(success);
+        }
       );
 
       ScateSDK.AddListener(
@@ -185,27 +228,42 @@ export default function App() {
         }
       );
 
-      ScateSDK.AddListener(ScateEvents.PAYWALL_SCREEN_FINISHED, (identifier: string) => {
-        console.log('Paywall Screen Finished:', identifier);
-      });
+      ScateSDK.AddListener(
+        ScateEvents.PAYWALL_SCREEN_FINISHED,
+        (identifier: string) => {
+          console.log('Paywall Screen Finished:', identifier);
+        }
+      );
 
-      ScateSDK.AddListener(ScateEvents.PAID_PRODUCT_CLICKED, (identifier: string) => {
-        console.log('Paid Product Clicked:', identifier);
-      });
+      ScateSDK.AddListener(
+        ScateEvents.PAID_PRODUCT_CLICKED,
+        (identifier: string) => {
+          console.log('Paid Product Clicked:', identifier);
+        }
+      );
 
-      ScateSDK.AddListener(ScateEvents.PAYWALL_SCREEN_CLOSED, (success: boolean) => {
-        console.log('Paywall Screen Closed:', success);
-        ScateSDK.ClosePaywall();
-      });
+      ScateSDK.AddListener(
+        ScateEvents.PAYWALL_SCREEN_CLOSED,
+        (success: boolean) => {
+          console.log('Paywall Screen Closed:', success);
+          ScateSDK.ClosePaywall();
+        }
+      );
 
-      ScateSDK.AddListener(ScateEvents.ONBOARDING_SCREEN_CLOSED, (success: boolean) => {
-        console.log('Onboarding Screen Closed:', success);
-        ScateSDK.CloseOnboarding();
-      });
+      ScateSDK.AddListener(
+        ScateEvents.ONBOARDING_SCREEN_CLOSED,
+        (success: boolean) => {
+          console.log('Onboarding Screen Closed:', success);
+          ScateSDK.CloseOnboarding();
+        }
+      );
 
-      ScateSDK.AddListener(ScateEvents.RESTORE_PURCHASE_CLICKED, (success: boolean) => {
-        console.log('Restore Purchase Clicked:', success);
-      });
+      ScateSDK.AddListener(
+        ScateEvents.RESTORE_PURCHASE_CLICKED,
+        (success: boolean) => {
+          console.log('Restore Purchase Clicked:', success);
+        }
+      );
 
       ScateSDK.Init('uw2YK');
       ScateSDK.SetAdid('test-adid');
@@ -264,9 +322,10 @@ export default function App() {
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
 
-      //ShowOnboarding();
-      
-      ScateSDK.ShowEventList();
+      ShowOnboarding();
+      //ShowPaywall();
+
+      //ScateSDK.ShowEventList();
     };
 
     fetchData();

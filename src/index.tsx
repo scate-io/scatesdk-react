@@ -233,6 +233,10 @@ export class ScateSDK {
     return _ScateSDK.CloseOnboarding();
   }
 
+  public static ClosePaidProductLoadingScreen() {
+    return _ScateSDK.ClosePaidProductLoadingScreen();
+  }
+
   public static ShowEventList() {
     return _ScateSDK.ShowEventList();
   }

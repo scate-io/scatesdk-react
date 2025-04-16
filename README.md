@@ -153,6 +153,9 @@ ScateSDK.ShowEventList();
 
 ## Show Paywall Screen
 
+- **Parameter:** `jsonString` — A JSON string containing the screen paywall configuration.
+- ⚠️ **Note:** You can find an example JSON object in the `example/src/App.tsx` file of the SDK repository.
+
 ```js
 ScateSDK.ShowPaywall('jsonString');
 ```
@@ -165,6 +168,9 @@ ScateSDK.ClosePaywall();
 
 ## Show Onboarding Screen
 
+- **Parameter:** `jsonString` — A JSON string containing the onboarding configuration.
+- ⚠️ **Note:** You can find an example JSON object in the `example/src/App.tsx` file of the SDK repository.
+
 ```js
 ScateSDK.ShowOnboarding('jsonString');
 ```
@@ -173,6 +179,12 @@ ScateSDK.ShowOnboarding('jsonString');
 
 ```js
 ScateSDK.CloseOnboarding();
+```
+
+## Close Paid Product Loading Screen (To Close The Loading Screen Which Opens After User Clicked On A Product In Onboarding Or Paywall Screens)
+
+```js
+ScateSDK.ClosePaidProductLoadingScreen();
 ```
 
 ## Paywall And Onboarding Screen Events

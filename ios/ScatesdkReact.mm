@@ -135,6 +135,9 @@ RCT_EXTERN_METHOD(CloseOnboarding:(RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(ClosePaywall:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(ClosePaidProductLoadingScreen:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(ShowEventList:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
