@@ -181,7 +181,13 @@ ScateSDK.ShowOnboarding('jsonString');
 ScateSDK.CloseOnboarding();
 ```
 
-## Close Paid Product Loading Screen (To Close The Loading Screen Which Opens After User Clicked On A Product In Onboarding Or Paywall Screens)
+## Show Paid Product Loading Screen
+
+```js
+ScateSDK.ShowPaidProductLoadingScreen();
+```
+
+## Close Paid Product Loading Screen Clicked On A Product In Onboarding Or Paywall Screens)
 
 ```js
 ScateSDK.ClosePaidProductLoadingScreen();

@@ -225,6 +225,12 @@ export default function App() {
         ScateEvents.ONBOARDING_SCREENS_FINISHED,
         (identifier: string) => {
           console.log('Onboarding Screens Finished:', identifier);
+
+          ScateSDK.ShowPaidProductLoadingScreen();
+
+          setTimeout(() => {
+            ScateSDK.ClosePaidProductLoadingScreen();
+          }, 5000);
         }
       );
 
@@ -232,6 +238,12 @@ export default function App() {
         ScateEvents.PAYWALL_SCREEN_FINISHED,
         (identifier: string) => {
           console.log('Paywall Screen Finished:', identifier);
+
+          ScateSDK.ShowPaidProductLoadingScreen();
+
+          setTimeout(() => {
+            ScateSDK.ClosePaidProductLoadingScreen();
+          }, 5000);
         }
       );
 
@@ -239,6 +251,12 @@ export default function App() {
         ScateEvents.PAID_PRODUCT_CLICKED,
         (identifier: string) => {
           console.log('Paid Product Clicked:', identifier);
+
+          ScateSDK.ShowPaidProductLoadingScreen();
+
+          setTimeout(() => {
+            ScateSDK.ClosePaidProductLoadingScreen();
+          }, 5000);
         }
       );
 
@@ -322,8 +340,8 @@ export default function App() {
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
 
-      ShowOnboarding();
-      //ShowPaywall();
+      //ShowOnboarding();
+      ShowPaywall();
 
       //ScateSDK.ShowEventList();
     };
