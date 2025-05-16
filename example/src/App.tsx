@@ -9,8 +9,10 @@ export default function App() {
 
   const ShowPaywall = () => {
     //For media you can also use image path like this
-    //const imagePath = "/path/to/image.jpg";
-    //const fileUrl = `file://${imagePath}`;
+    //import { Image } from 'react-native';
+    //const assetPath = './assets/images/app_logo.png';
+    //const image = require(assetPath);
+    //const imageUri = Image.resolveAssetSource(image).uri;
 
     const paywallData = {
       media: 'https://ninegshort.b-cdn.net/Apps/ScateSDK/ob_sample.png',
@@ -89,8 +91,10 @@ export default function App() {
 
   const ShowOnboarding = () => {
     //For media you can also use image path like this
-    //const imagePath = "/path/to/image.jpg";
-    //const fileUrl = `file://${imagePath}`;
+    //import { Image } from 'react-native';
+    //const assetPath = './assets/images/app_logo.png';
+    //const image = require(assetPath);
+    //const imageUri = Image.resolveAssetSource(image).uri;
 
     const onboardingData = [
       {
