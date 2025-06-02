@@ -203,6 +203,8 @@ export default function App() {
 
   React.useEffect(() => {
     const fetchData = async () => {
+      // Example usage of ScateSDK event listeners.
+      // Add these listeners if you need to handle specific events in your app.
       ScateSDK.AddListener(
         ScateEvents.REMOTE_CONFIG_READY,
         async (success: boolean) => {
@@ -282,8 +284,10 @@ export default function App() {
 
       ScateSDK.Init('uw2YK');
       ScateSDK.SetAdid('test-adid');
-      ScateSDK.Event('test-event');
 
+      // Example ScateSDK event functions.
+      // If you need to send events, you can use these functions.
+      ScateSDK.Event('test-event');
       ScateSDK.OnboardingStart();
       ScateSDK.OnboardingStep('location_screen');
       ScateSDK.OnboardingStep('notification_screen');
@@ -329,8 +333,8 @@ export default function App() {
       ScateSDK.DailyStreakClaimed();
       ScateSDK.DailyStreakClosed();
 
-      console.log('Local', await ScateSDK.GetRemoteConfig('test', 'default'));
-
+      // Example usage of ScateSDK remote config.
+      // Use these function if you have set up remote config in your Scate dashboard.
       let r = await ScateSDK.GetRemoteConfig('test', 'default');
       setResult(r);
 
