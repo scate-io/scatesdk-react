@@ -392,6 +392,86 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void RevenuecatInitiated(Promise promise)  {
+    try {
+      ScateCoreSDK.RevenuecatInitiated();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("RevenuecatInitiated", e);
+    }
+  }
+
+  @ReactMethod
+  public void AdjustInitiated(Promise promise)  {
+    try {
+      ScateCoreSDK.AdjustInitiated();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("AdjustInitiated", e);
+    }
+  }
+
+  @ReactMethod
+  public void AdjustSetToRevenuecat(Promise promise)  {
+    try {
+      ScateCoreSDK.AdjustSetToRevenuecat();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("AdjustSetToRevenuecat", e);
+    }
+  }
+
+  @ReactMethod
+  public void SplashCompleted(Promise promise)  {
+    try {
+      ScateCoreSDK.SplashCompleted();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SplashCompleted", e);
+    }
+  }
+
+  @ReactMethod
+  public void FirebaseRemoteInitiated(Promise promise)  {
+    try {
+      ScateCoreSDK.FirebaseRemoteInitiated();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("FirebaseRemoteInitiated", e);
+    }
+  }
+
+  @ReactMethod
+  public void HomeScreenOpen(Promise promise)  {
+    try {
+      ScateCoreSDK.HomeScreenOpen();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("HomeScreenOpen", e);
+    }
+  }
+
+  @ReactMethod
+  public void OnboardingPaywallShown(Promise promise)  {
+    try {
+      ScateCoreSDK.OnboardingPaywallShown();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("OnboardingPaywallShown", e);
+    }
+  }
+
+  @ReactMethod
+  public void OnboardingPaywallClosed(Promise promise)  {
+    try {
+      ScateCoreSDK.OnboardingPaywallClosed();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("OnboardingPaywallClosed", e);
+    }
+  }
+
+  @ReactMethod
   public void ShowOnboarding(String jsonString, Promise promise) {
     // Empty implementation
     promise.resolve(null);

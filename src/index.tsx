@@ -217,6 +217,38 @@ export class ScateSDK {
     return _ScateSDK.DailyStreakClosed();
   }
 
+  public static RevenuecatInitiated() {
+    return _ScateSDK.RevenuecatInitiated();
+  }
+
+  public static AdjustInitiated() {
+    return _ScateSDK.AdjustInitiated();
+  }
+
+  public static AdjustSetToRevenuecat() {
+    return _ScateSDK.AdjustSetToRevenuecat();
+  }
+
+  public static SplashCompleted() {
+    return _ScateSDK.SplashCompleted();
+  }
+
+  public static FirebaseRemoteInitiated() {
+    return _ScateSDK.FirebaseRemoteInitiated();
+  }
+
+  public static HomeScreenOpen() {
+    return _ScateSDK.HomeScreenOpen();
+  }
+
+  public static OnboardingPaywallShown() {
+    return _ScateSDK.OnboardingPaywallShown();
+  }
+
+  public static OnboardingPaywallClosed() {
+    return _ScateSDK.OnboardingPaywallClosed();
+  }
+
   public static ShowPaywall(jsonString: string) {
     return _ScateSDK.ShowPaywall(jsonString);
   }

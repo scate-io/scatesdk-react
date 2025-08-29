@@ -242,7 +242,55 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
-   @objc(ShowOnboarding:withResolver:withRejecter:)
+  @objc(RevenuecatInitiated:withRejecter:)
+  func RevenuecatInitiated(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.RevenuecatInitiated()
+    resolve(nil)
+  }
+
+  @objc(AdjustInitiated:withRejecter:)
+  func AdjustInitiated(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.AdjustInitiated()
+    resolve(nil)
+  }
+
+  @objc(AdjustSetToRevenuecat:withRejecter:)
+  func AdjustSetToRevenuecat(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.AdjustSetToRevenuecat()
+    resolve(nil)
+  }
+
+  @objc(SplashCompleted:withRejecter:)
+  func SplashCompleted(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SplashCompleted()
+    resolve(nil)
+  }
+
+  @objc(FirebaseRemoteInitiated:withRejecter:)
+  func FirebaseRemoteInitiated(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.FirebaseRemoteInitiated()
+    resolve(nil)
+  }
+
+  @objc(HomeScreenOpen:withRejecter:)
+  func HomeScreenOpen(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.HomeScreenOpen()
+    resolve(nil)
+  }
+
+  @objc(OnboardingPaywallShown:withRejecter:)
+  func OnboardingPaywallShown(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.OnboardingPaywallShown()
+    resolve(nil)
+  }
+
+  @objc(OnboardingPaywallClosed:withRejecter:)
+  func OnboardingPaywallClosed(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.OnboardingPaywallClosed()
+    resolve(nil)
+  }
+
+  @objc(ShowOnboarding:withResolver:withRejecter:)
   func ShowOnboarding(jsonString: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.ShowOnboarding(jsonString: jsonString)
     resolve(nil)
