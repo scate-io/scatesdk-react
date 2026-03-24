@@ -12,9 +12,14 @@ class ScateSDK: RCTEventEmitter {
       ScateCoreSDK.RestorePurchaseClicked.rawValue]
   }
 
-  @objc(Init:withResolver:withRejecter:)
-  func Init(appID: String, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-    ScateCoreSDK.Init(appID: appID)
+  @objc(Init:withOptions:withResolver:withRejecter:)
+  func Init(appID: String, options: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    let configuration = ScateSDKConfiguration()
+    if let firebaseUserIdSyncEnabled = options?["firebaseUserIdSyncEnabled"] as? Bool {
+      configuration.firebaseUserIdSyncEnabled = firebaseUserIdSyncEnabled
+    }
+
+    ScateCoreSDK.Init(appID: appID, configuration: configuration)
     resolve("")
   }
 

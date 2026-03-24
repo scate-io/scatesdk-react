@@ -4,6 +4,7 @@
 @interface RCT_EXTERN_MODULE(ScateSDK, RCTEventEmitter)
 
 RCT_EXTERN_METHOD(Init:(NSString *)appID
+                 withOptions:(NSDictionary *)options
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 

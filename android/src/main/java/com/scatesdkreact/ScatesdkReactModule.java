@@ -35,7 +35,7 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void Init(String appID, Promise promise) {
+  public void Init(String appID, ReadableMap options, Promise promise) {
     try {
       ScateCoreSDK.init(appID, reactContext.getApplicationContext());
       promise.resolve(null);

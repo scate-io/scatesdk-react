@@ -29,11 +29,20 @@ export enum ScateEvents {
   RESTORE_PURCHASE_CLICKED = 'Scate_RestorePurchaseClicked',
 }
 
+export type ScateInitOptions = {
+  firebaseUserIdSyncEnabled?: boolean;
+};
+
 export class ScateSDK {
   private static listeners: Map<string, Function> = new Map();
 
-  public static Init(appID: string): Promise<void> {
-    return _ScateSDK.Init(appID);
+  public static Init(
+    appID: string,
+    options: ScateInitOptions = {}
+  ): Promise<void> {
+    return _ScateSDK.Init(appID, {
+      firebaseUserIdSyncEnabled: options.firebaseUserIdSyncEnabled ?? true,
+    });
   }
 
   public static SetAdid(adid: string): Promise<void> {
