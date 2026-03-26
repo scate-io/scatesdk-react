@@ -7,7 +7,7 @@ export default function App() {
   const [result, setResult] = React.useState<string | undefined>();
   const [success, setSuccess] = React.useState<boolean>(false);
 
-  const ShowPaywall = () => {
+  const showPaywall = () => {
     //For media you can also use image path like this
     //import { Image } from 'react-native';
     //const assetPath = './assets/images/app_logo.png';
@@ -89,7 +89,7 @@ export default function App() {
     ScateSDK.ShowPaywall(jsonString);
   };
 
-  const ShowOnboarding = () => {
+  const showOnboarding = () => {
     //For media you can also use image path like this
     //import { Image } from 'react-native';
     //const assetPath = './assets/images/app_logo.png';
@@ -207,8 +207,8 @@ export default function App() {
       // Add these listeners if you need to handle specific events in your app.
       ScateSDK.AddListener(
         ScateEvents.REMOTE_CONFIG_READY,
-        async (success: boolean) => {
-          console.log('Success:', success);
+        async (isSuccessful: boolean) => {
+          console.log('Success:', isSuccessful);
           console.log(
             'Remote',
             await ScateSDK.GetRemoteConfig('test', 'default')
@@ -216,7 +216,7 @@ export default function App() {
           let r = await ScateSDK.GetRemoteConfig('test', 'default');
           // set state
           setResult(r);
-          setSuccess(success);
+          setSuccess(isSuccessful);
         }
       );
 
@@ -261,24 +261,24 @@ export default function App() {
 
       ScateSDK.AddListener(
         ScateEvents.PAYWALL_SCREEN_CLOSED,
-        (success: boolean) => {
-          console.log('Paywall Screen Closed:', success);
+        (isSuccessful: boolean) => {
+          console.log('Paywall Screen Closed:', isSuccessful);
           ScateSDK.ClosePaywall();
         }
       );
 
       ScateSDK.AddListener(
         ScateEvents.ONBOARDING_SCREEN_CLOSED,
-        (success: boolean) => {
-          console.log('Onboarding Screen Closed:', success);
+        (isSuccessful: boolean) => {
+          console.log('Onboarding Screen Closed:', isSuccessful);
           ScateSDK.CloseOnboarding();
         }
       );
 
       ScateSDK.AddListener(
         ScateEvents.RESTORE_PURCHASE_CLICKED,
-        (success: boolean) => {
-          console.log('Restore Purchase Clicked:', success);
+        (isSuccessful: boolean) => {
+          console.log('Restore Purchase Clicked:', isSuccessful);
         }
       );
 
@@ -342,7 +342,6 @@ export default function App() {
       ScateSDK.OnboardingPaywallShown();
       ScateSDK.OnboardingPaywallClosed();
 
-
       // Example usage of ScateSDK remote config.
       // Use these function if you have set up remote config in your Scate dashboard.
       let r = await ScateSDK.GetRemoteConfig('test', 'default');
@@ -351,8 +350,12 @@ export default function App() {
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
 
-      //ShowOnboarding();
-      ShowPaywall();
+      const shouldShowOnboarding = false;
+      if (shouldShowOnboarding) {
+        showOnboarding();
+      } else {
+        showPaywall();
+      }
 
       //ScateSDK.ShowEventList();
     };

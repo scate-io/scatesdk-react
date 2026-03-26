@@ -33,6 +33,15 @@ export type ScateInitOptions = {
   firebaseUserIdSyncEnabled?: boolean;
 };
 
+type ScateEventPayload = {
+  event?: string;
+  data?: {
+    remoteConfigFetched?: boolean;
+    identifier?: string;
+    success?: boolean;
+  };
+};
+
 export class ScateSDK {
   private static listeners: Map<string, Function> = new Map();
 
@@ -67,30 +76,30 @@ export class ScateSDK {
     return _ScateSDK.GetRemoteConfig(key, defaultValue);
   }
 
-  public static HandleEvent(name: string, event: any) {
+  public static HandleEvent(name: string, event: ScateEventPayload) {
     const listener = this.listeners.get(name);
     console.log(event);
     if (listener) {
-      if (event['event'] == 'Scate_RemoteConfigsReady') {
-        const remoteConfigFetched = event['data']['remoteConfigFetched'];
+      if (event.event === 'Scate_RemoteConfigsReady') {
+        const remoteConfigFetched = event.data?.remoteConfigFetched;
         listener(remoteConfigFetched);
-      } else if (event['event'] == 'Scate_PaidProductClicked') {
-        const productClicked = event['data']['identifier'];
+      } else if (event.event === 'Scate_PaidProductClicked') {
+        const productClicked = event.data?.identifier;
         listener(productClicked);
-      } else if (event['event'] == 'Scate_OnboardingScreensFinished') {
-        const onboardingFinished = event['data']['identifier'];
+      } else if (event.event === 'Scate_OnboardingScreensFinished') {
+        const onboardingFinished = event.data?.identifier;
         listener(onboardingFinished);
-      } else if (event['event'] == 'Scate_PaywallScreenClosed') {
-        const paywallScreenClosed = event['data']['success'];
+      } else if (event.event === 'Scate_PaywallScreenClosed') {
+        const paywallScreenClosed = event.data?.success;
         listener(paywallScreenClosed);
-      } else if (event['event'] == 'Scate_OnboardingScreenClosed') {
-        const onboardingScreenClosed = event['data']['success'];
+      } else if (event.event === 'Scate_OnboardingScreenClosed') {
+        const onboardingScreenClosed = event.data?.success;
         listener(onboardingScreenClosed);
-      } else if (event['event'] == 'Scate_PaywallScreenFinished') {
-        const onboardingFinished = event['data']['identifier'];
+      } else if (event.event === 'Scate_PaywallScreenFinished') {
+        const onboardingFinished = event.data?.identifier;
         listener(onboardingFinished);
-      } else if (event['event'] == 'Scate_RestorePurchaseClicked') {
-        const restorePurchaseClicked = event['data']['success'];
+      } else if (event.event === 'Scate_RestorePurchaseClicked') {
+        const restorePurchaseClicked = event.data?.success;
         listener(restorePurchaseClicked);
       }
     }
