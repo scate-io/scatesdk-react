@@ -30,8 +30,19 @@ export enum ScateEvents {
 }
 
 export type ScateInitOptions = {
+  debug?: boolean;
   firebaseUserIdSyncEnabled?: boolean;
 };
+
+export type ScateEventParameterValue =
+  | string
+  | number
+  | boolean
+  | null
+  | ScateEventParameterValue[]
+  | { [key: string]: ScateEventParameterValue };
+
+export type ScateEventParameters = Record<string, ScateEventParameterValue>;
 
 type ScateEventPayload = {
   event?: string;
@@ -50,6 +61,7 @@ export class ScateSDK {
     options: ScateInitOptions = {}
   ): Promise<void> {
     return _ScateSDK.Init(appID, {
+      debug: options.debug ?? false,
       firebaseUserIdSyncEnabled: options.firebaseUserIdSyncEnabled ?? true,
     });
   }
@@ -58,8 +70,11 @@ export class ScateSDK {
     return _ScateSDK.SetAdid(adid);
   }
 
-  public static Event(name: string): Promise<void> {
-    return _ScateSDK.Event(name);
+  public static Event(
+    name: string,
+    parameters?: ScateEventParameters
+  ): Promise<void> {
+    return _ScateSDK.Event(name, parameters ?? null);
   }
 
   public static EventWithValue(
@@ -74,6 +89,10 @@ export class ScateSDK {
     defaultValue: string
   ): Promise<string> {
     return _ScateSDK.GetRemoteConfig(key, defaultValue);
+  }
+
+  public static GetUserID(): Promise<string | null> {
+    return _ScateSDK.GetUserID();
   }
 
   public static HandleEvent(name: string, event: ScateEventPayload) {

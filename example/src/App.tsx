@@ -282,12 +282,18 @@ export default function App() {
         }
       );
 
-      ScateSDK.Init('uw2YK');
+      await ScateSDK.Init('uw2YK', { debug: true });
+      console.log('Scate userId:', await ScateSDK.GetUserID());
       ScateSDK.SetAdid('test-adid');
 
       // Example ScateSDK event functions.
       // If you need to send events, you can use these functions.
       ScateSDK.Event('test-event');
+      ScateSDK.Event('test-event-with-parameters', {
+        screen: 'react_native_example',
+        action: 'app_started',
+        debug: __DEV__,
+      });
       ScateSDK.OnboardingStart();
       ScateSDK.OnboardingStep('location_screen');
       ScateSDK.OnboardingStep('notification_screen');

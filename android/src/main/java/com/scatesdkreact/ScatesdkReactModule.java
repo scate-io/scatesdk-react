@@ -6,7 +6,6 @@ import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.scate.scatesdk.ScateCoreSDK;
 import com.scate.scatesdk.models.RemoteConfigListener;
-import org.json.JSONObject;
 
 @ReactModule(name = ScatesdkReactModule.NAME)
 public class ScatesdkReactModule extends ReactContextBaseJavaModule {
@@ -55,12 +54,30 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void Event(String name, Promise promise) {
+  public void Event(String name, ReadableMap parameters, Promise promise) {
     try {
-      ScateCoreSDK.event(name);
+      if (parameters == null) {
+        ScateCoreSDK.event(name);
+      } else {
+        ScateCoreSDK.event(name, parameters.toHashMap());
+      }
       promise.resolve(null);
     } catch (Exception e) {
       promise.reject("EventError", e);
+    }
+  }
+
+  @ReactMethod
+  public void EventWithParameters(String name, ReadableMap parameters, Promise promise) {
+    try {
+      if (parameters == null) {
+        ScateCoreSDK.event(name);
+      } else {
+        ScateCoreSDK.event(name, parameters.toHashMap());
+      }
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("EventWithParametersError", e);
     }
   }
 
@@ -81,6 +98,15 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
       promise.resolve(value);
     } catch (Exception e) {
       promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetUserID(Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.GetUserID());
+    } catch (Exception e) {
+      promise.reject("GetUserIDError", e);
     }
   }
 
@@ -114,6 +140,7 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
 
         WritableMap params = Arguments.createMap();
         params.putMap("data", data);
+        params.putString("event", eventName);
 
         reactContext
             .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)

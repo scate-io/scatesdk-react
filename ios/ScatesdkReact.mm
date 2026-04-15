@@ -13,8 +13,14 @@ RCT_EXTERN_METHOD(SetAdid:(NSString *)adid
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(Event:(NSString *)name
+                 withParameters:(NSDictionary *)parameters
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(EventWithParameters:(NSString *)name
+                  withParameters:(NSDictionary *)parameters
+                  withResolver:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(EventWithValue:(NSString *)name
                   withCustomValue:(NSString* )customValue
@@ -25,6 +31,9 @@ RCT_EXTERN_METHOD(GetRemoteConfig:(NSString *)key
                  withDefaultValue:(NSString *)defaultValue
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)                 
+
+RCT_EXTERN_METHOD(GetUserID:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(AddListener:(NSString*) name)
 RCT_EXTERN_METHOD(RemoveListener:(NSString*) name)

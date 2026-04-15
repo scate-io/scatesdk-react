@@ -1,3 +1,4 @@
+import LocalAuthentication
 import ScateSDK
 
 @objc(ScateSDK)
@@ -15,6 +16,10 @@ class ScateSDK: RCTEventEmitter {
   @objc(Init:withOptions:withResolver:withRejecter:)
   func Init(appID: String, options: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
     let configuration = ScateSDKConfiguration()
+    if let debug = options?["debug"] as? Bool {
+      ScateCoreSDK.debug = debug
+    }
+
     if let firebaseUserIdSyncEnabled = options?["firebaseUserIdSyncEnabled"] as? Bool {
       configuration.firebaseUserIdSyncEnabled = firebaseUserIdSyncEnabled
     }
@@ -29,15 +34,24 @@ class ScateSDK: RCTEventEmitter {
     resolve("")
   }
 
-  @objc(Event:withResolver:withRejecter:)
-    func Event(name: String, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-    ScateCoreSDK.Event(name: name)
+  @objc(Event:withParameters:withResolver:withRejecter:)
+  func Event(name: String, parameters: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    if let parameters {
+      ScateCoreSDK.Event(name: name, parameters: parameters)
+    } else {
+      ScateCoreSDK.Event(name: name)
+    }
     resolve("")
   }
 
+  @objc(EventWithParameters:withParameters:withResolver:withRejecter:)
+  func EventWithParameters(name: String, parameters: NSDictionary, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    Event(name: name, parameters: parameters, resolve: resolve, reject: reject)
+  }
+
   @objc(EventWithValue:withCustomValue:withResolver:withRejecter:)
-    func EventWithValue(name: String, value: String, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-      ScateCoreSDK.Event(name: name, customValue: value)
+  func EventWithValue(name: String, value: String, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    ScateCoreSDK.Event(name: name, customValue: value)
     resolve("")
   }
 
@@ -45,6 +59,11 @@ class ScateSDK: RCTEventEmitter {
   func GetRemoteConfig(key: String, defaultValue: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
     let config = ScateCoreSDK.GetRemoteConfig(key: key, defaultValue: defaultValue)
     resolve(config)
+  }
+
+  @objc(GetUserID:withRejecter:)
+  func GetUserID(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    resolve(ScateCoreSDK.GetUserID())
   }
 
   @objc

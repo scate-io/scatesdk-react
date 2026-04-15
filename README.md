@@ -7,6 +7,7 @@ npm install scatesdk-react
 ## Android Integration
 
 To ensure that the ScateSDK works properly on Android, you need to add the Maven repository to your build.gradle file.
+This wrapper version uses `com.scate:scatesdk:6.0.0` or newer for parameterized events.
 
 In your project's android/build.gradle file, add the following Maven repository:
 
@@ -75,7 +76,21 @@ To send events, you can use the following code:
 ScateSDK.Event('button_clicked');
 ```
 
+### Send Events with Parameters
+
+Pass a dictionary as the optional second argument to `Event`. These values are sent as event `parameters`.
+
+```js
+ScateSDK.Event('button_clicked', {
+  screen: 'paywall',
+  position: 1,
+  isPrimary: true,
+});
+```
+
 ### Send Events with Additional Data
+
+Use this only when you need the legacy `customValue` field.
 
 ```js
 ScateSDK.EventWithValue('button_clicked', 'subscribe_btn');
