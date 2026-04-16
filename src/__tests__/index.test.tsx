@@ -3,7 +3,9 @@ describe('ScateSDK.Event', () => {
     const mockScateSDK = {
       Event: jest.fn(),
       EventWithValue: jest.fn(),
+      GetAdjustId: jest.fn(),
       GetUserID: jest.fn(),
+      InitAdjust: jest.fn(),
     };
 
     jest.resetModules();
@@ -70,5 +72,34 @@ describe('ScateSDK.Event', () => {
 
     expect(mockScateSDK.GetUserID).toHaveBeenCalledWith();
     return expect(result).resolves.toBe('user-id');
+  });
+
+  it('initializes Adjust with noATT disabled by default', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+
+    ScateSDK.InitAdjust('adjust-token');
+
+    expect(mockScateSDK.InitAdjust).toHaveBeenCalledWith('adjust-token', {
+      noATT: false,
+    });
+  });
+
+  it('passes noATT through to native Adjust initialization', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+
+    ScateSDK.InitAdjust('adjust-token', { noATT: true });
+
+    expect(mockScateSDK.InitAdjust).toHaveBeenCalledWith('adjust-token', {
+      noATT: true,
+    });
+  });
+
+  it('passes the Adjust id callback to native', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+    const callback = jest.fn();
+
+    ScateSDK.GetAdjustId(callback);
+
+    expect(mockScateSDK.GetAdjustId).toHaveBeenCalledWith(callback);
   });
 });

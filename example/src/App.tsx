@@ -1,11 +1,16 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { ScateEvents, ScateSDK } from 'scatesdk-react';
+
+const adjustToken = '19atefbehslc';
 
 export default function App() {
   const [result, setResult] = React.useState<string | undefined>();
   const [success, setSuccess] = React.useState<boolean>(false);
+  const [adjustStatus, setAdjustStatus] =
+    React.useState<string>('Adjust not started');
+  const [adjustId, setAdjustId] = React.useState<string | undefined>();
 
   const showPaywall = () => {
     //For media you can also use image path like this
@@ -284,7 +289,19 @@ export default function App() {
 
       await ScateSDK.Init('uw2YK', { debug: true });
       console.log('Scate userId:', await ScateSDK.GetUserID());
-      ScateSDK.SetAdid('test-adid');
+
+      try {
+        setAdjustStatus('Adjust initializing');
+        await ScateSDK.InitAdjust(adjustToken);
+        setAdjustStatus('Adjust initialized, waiting for ADID');
+        ScateSDK.GetAdjustId((adid) => {
+          setAdjustId(adid);
+          setAdjustStatus('ADID ready');
+        });
+      } catch (error) {
+        console.log('Adjust init failed:', error);
+        setAdjustStatus('Adjust init failed');
+      }
 
       // Example ScateSDK event functions.
       // If you need to send events, you can use these functions.
@@ -356,13 +373,6 @@ export default function App() {
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
 
-      const shouldShowOnboarding = false;
-      if (shouldShowOnboarding) {
-        showOnboarding();
-      } else {
-        showPaywall();
-      }
-
       //ScateSDK.ShowEventList();
     };
 
@@ -370,18 +380,50 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-      <Text>Success: {success?.toString()}</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.heading}>Scate React Example</Text>
+      <View style={styles.statusGroup}>
+        <Text style={styles.label}>Remote config</Text>
+        <Text>Result: {result ?? 'waiting'}</Text>
+        <Text>Success: {success?.toString()}</Text>
+      </View>
+      <View style={styles.statusGroup}>
+        <Text style={styles.label}>Adjust</Text>
+        <Text>Status: {adjustStatus}</Text>
+        <Text selectable={true}>ADID: {adjustId ?? 'waiting'}</Text>
+      </View>
+      <View style={styles.actions}>
+        <Button title="Show Paywall" onPress={showPaywall} />
+        <Button title="Show Onboarding" onPress={showOnboarding} />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 24,
+    gap: 20,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  statusGroup: {
+    alignItems: 'center',
+    gap: 8,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  actions: {
+    width: '100%',
+    gap: 12,
   },
   box: {
     width: 60,

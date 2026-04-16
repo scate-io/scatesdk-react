@@ -7,7 +7,7 @@ npm install scatesdk-react
 ## Android Integration
 
 To ensure that the ScateSDK works properly on Android, you need to add the Maven repository to your build.gradle file.
-This wrapper version uses `com.scate:scatesdk:6.0.0` or newer for parameterized events.
+This wrapper version uses `com.scate:scatesdk:7.0.1` or newer for Adjust integration and parameterized events.
 
 In your project's android/build.gradle file, add the following Maven repository:
 
@@ -44,6 +44,16 @@ To do this, add the following to your proguard-rules.pro file:
 -keepclassmembers class com.scatesdkreact.** { *; }
 ```
 
+## iOS Integration
+
+This wrapper version uses `ScateSDK` 7.0.0 or newer and Adjust 5.6.1 or newer for Adjust integration. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist if you want ScateSDK to request App Tracking Transparency authorization.
+
+If CocoaPods reports that the Swift pod `scatesdk-react` depends on Adjust and Adjust does not define modules, add Adjust as a modular header in the app Podfile:
+
+```ruby
+pod 'Adjust', '~> 5.6.1', :modular_headers => true
+```
+
 ## Usage
 
 ### Initialize the SDK
@@ -51,14 +61,21 @@ To do this, add the following to your proguard-rules.pro file:
 ```js
 import { ScateSDK } from 'scatesdk-react';
 
-// ...
-// It's better to initialize the SDK after Adjust SDK
 ScateSDK.Init('your app id');
+ScateSDK.InitAdjust('your adjust token');
 
-// make sure to set adid from Adjust SDK
-let adid = Adjust.adid();
-ScateSDK.SetAdid(adid);
+ScateSDK.GetAdjustId((adid) => {
+  // ADID is non-empty here.
+});
 ```
+
+By default, on iOS, `InitAdjust` configures Adjust with a 120 second ATT consent wait interval and requests App Tracking Transparency authorization at init time. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist for the prompt to appear. Pass `noATT: true` to skip ScateSDK's ATT request path:
+
+```js
+ScateSDK.InitAdjust('your adjust token', { noATT: true });
+```
+
+When an ADID is resolved, ScateSDK stores it as the SDK ADID and sends `scate_adjust_id` once after ScateSDK is initialized. If your app already initializes Adjust, avoid calling `InitAdjust` a second time; keep your app-owned Adjust setup and call `ScateSDK.GetAdjustId(...)` after Adjust is ready, or continue to use `ScateSDK.SetAdid(adid)`.
 
 By default, on iOS, when Firebase Analytics is linked and configured in the host app, ScateSDK sets Firebase `user_id` to the Scate user ID during initialization. If your app already manages Firebase `user_id`, disable this before initialization:
 

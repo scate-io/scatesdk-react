@@ -54,6 +54,22 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void InitAdjust(String adjustToken, ReadableMap options, Promise promise) {
+    try {
+      boolean noATT = options != null && options.hasKey("noATT") && options.getBoolean("noATT");
+      ScateCoreSDK.InitAdjust(adjustToken, reactContext.getApplicationContext(), noATT);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("InitAdjustError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetAdjustId(Callback callback) {
+    ScateCoreSDK.GetAdjustId(adid -> callback.invoke(adid));
+  }
+
+  @ReactMethod
   public void Event(String name, ReadableMap parameters, Promise promise) {
     try {
       if (parameters == null) {

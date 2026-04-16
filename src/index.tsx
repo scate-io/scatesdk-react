@@ -34,6 +34,10 @@ export type ScateInitOptions = {
   firebaseUserIdSyncEnabled?: boolean;
 };
 
+export type ScateAdjustOptions = {
+  noATT?: boolean;
+};
+
 export type ScateEventParameterValue =
   | string
   | number
@@ -68,6 +72,19 @@ export class ScateSDK {
 
   public static SetAdid(adid: string): Promise<void> {
     return _ScateSDK.SetAdid(adid);
+  }
+
+  public static InitAdjust(
+    adjustToken: string,
+    options: ScateAdjustOptions = {}
+  ): Promise<void> {
+    return _ScateSDK.InitAdjust(adjustToken, {
+      noATT: options.noATT ?? false,
+    });
+  }
+
+  public static GetAdjustId(callback: (adid: string) => void): void {
+    _ScateSDK.GetAdjustId(callback);
   }
 
   public static Event(

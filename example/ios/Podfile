@@ -15,7 +15,8 @@ if linkage != nil
 end
 
 target 'ScatesdkReactExample' do
-  pod 'ScateSDK', :podspec => 'https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v6.0.0/ScateSDK.podspec'
+  pod 'ScateSDK', :podspec => 'https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.1/ScateSDK.podspec'
+  pod 'Adjust', '~> 5.6.1', :modular_headers => true
 
   config = use_native_modules!
 

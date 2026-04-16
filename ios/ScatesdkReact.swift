@@ -34,6 +34,20 @@ class ScateSDK: RCTEventEmitter {
     resolve("")
   }
 
+  @objc(InitAdjust:withOptions:withResolver:withRejecter:)
+  func InitAdjust(adjustToken: String, options: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    let noATT = options?["noATT"] as? Bool ?? false
+    ScateCoreSDK.InitAdjust(adjustToken: adjustToken, noATT: noATT)
+    resolve("")
+  }
+
+  @objc(GetAdjustId:)
+  func GetAdjustId(callback: @escaping RCTResponseSenderBlock) -> Void {
+    ScateCoreSDK.GetAdjustId { adid in
+      callback([adid])
+    }
+  }
+
   @objc(Event:withParameters:withResolver:withRejecter:)
   func Event(name: String, parameters: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
     if let parameters {

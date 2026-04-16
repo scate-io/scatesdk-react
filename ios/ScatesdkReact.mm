@@ -12,6 +12,13 @@ RCT_EXTERN_METHOD(SetAdid:(NSString *)adid
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(InitAdjust:(NSString *)adjustToken
+                 withOptions:(NSDictionary *)options
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(GetAdjustId:(RCTResponseSenderBlock)callback)
+
 RCT_EXTERN_METHOD(Event:(NSString *)name
                  withParameters:(NSDictionary *)parameters
                  withResolver:(RCTPromiseResolveBlock)resolve
