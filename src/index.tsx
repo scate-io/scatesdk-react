@@ -327,6 +327,46 @@ export class ScateSDK {
     return _ScateSDK.ClosePaidProductLoadingScreen();
   }
 
+  public static SubscriptionSuccess() {
+    return _ScateSDK.SubscriptionSuccess();
+  }
+
+  public static InAppPurchaseSuccess() {
+    return _ScateSDK.InAppPurchaseSuccess();
+  }
+
+  public static ContentCreateStart() {
+    return _ScateSDK.ContentCreateStart();
+  }
+
+  public static ContentCreateSuccess() {
+    return _ScateSDK.ContentCreateSuccess();
+  }
+
+  public static ContentCreateFail() {
+    return _ScateSDK.ContentCreateFail();
+  }
+
+  public static SubsStart() {
+    return _ScateSDK.SubsStart();
+  }
+
+  public static SubsSuccess() {
+    return _ScateSDK.SubsSuccess();
+  }
+
+  public static SubsFail() {
+    return _ScateSDK.SubsFail();
+  }
+
+  public static SubsCancel() {
+    return _ScateSDK.SubsCancel();
+  }
+
+  public static AllServicesInitialized() {
+    return _ScateSDK.AllServicesInitialized();
+  }
+
   public static ShowEventList() {
     return _ScateSDK.ShowEventList();
   }

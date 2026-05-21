@@ -550,7 +550,107 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
       promise.resolve(null);
     }
 
-   @ReactMethod
+  @ReactMethod
+  public void SubscriptionSuccess(Promise promise) {
+    try {
+      ScateCoreSDK.SubscriptionSuccess();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubscriptionSuccess", e);
+    }
+  }
+
+  @ReactMethod
+  public void InAppPurchaseSuccess(Promise promise) {
+    try {
+      ScateCoreSDK.InAppPurchaseSuccess();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("InAppPurchaseSuccess", e);
+    }
+  }
+
+  @ReactMethod
+  public void ContentCreateStart(Promise promise) {
+    try {
+      ScateCoreSDK.ContentCreateStart();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("ContentCreateStart", e);
+    }
+  }
+
+  @ReactMethod
+  public void ContentCreateSuccess(Promise promise) {
+    try {
+      ScateCoreSDK.ContentCreateSuccess();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("ContentCreateSuccess", e);
+    }
+  }
+
+  @ReactMethod
+  public void ContentCreateFail(Promise promise) {
+    try {
+      ScateCoreSDK.ContentCreateFail();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("ContentCreateFail", e);
+    }
+  }
+
+  @ReactMethod
+  public void SubsStart(Promise promise) {
+    try {
+      ScateCoreSDK.SubsStart();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubsStart", e);
+    }
+  }
+
+  @ReactMethod
+  public void SubsSuccess(Promise promise) {
+    try {
+      ScateCoreSDK.SubsSuccess();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubsSuccess", e);
+    }
+  }
+
+  @ReactMethod
+  public void SubsFail(Promise promise) {
+    try {
+      ScateCoreSDK.SubsFail();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubsFail", e);
+    }
+  }
+
+  @ReactMethod
+  public void SubsCancel(Promise promise) {
+    try {
+      ScateCoreSDK.SubsCancel();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubsCancel", e);
+    }
+  }
+
+  @ReactMethod
+  public void AllServicesInitialized(Promise promise) {
+    try {
+      ScateCoreSDK.AllServicesInitialized();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("AllServicesInitialized", e);
+    }
+  }
+
+  @ReactMethod
   public void ShowEventList(Promise promise) {
     // Empty implementation
     promise.resolve(null);

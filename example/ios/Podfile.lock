@@ -1169,9 +1169,9 @@ PODS:
     - React-logger (= 0.74.1)
     - React-perflogger (= 0.74.1)
     - React-utils (= 0.74.1)
-  - ScateSDK (7.0.1):
+  - ScateSDK (7.0.3):
     - Adjust (~> 5.6.1)
-  - scatesdk-react (6.0.1):
+  - scatesdk-react (7.0.0):
     - Adjust (~> 5.6.1)
     - DoubleConversion
     - glog
@@ -1192,7 +1192,7 @@ PODS:
     - React-utils
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScateSDK (= 7.0.1)
+    - ScateSDK (= 7.0.3)
     - Yoga
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
@@ -1254,7 +1254,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - ScateSDK (from `https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.1/ScateSDK.podspec`)
+  - ScateSDK (from `https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.3/ScateSDK.podspec`)
   - scatesdk-react (from `../..`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1373,7 +1373,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   ScateSDK:
-    :podspec: https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.1/ScateSDK.podspec
+    :podspec: https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.3/ScateSDK.podspec
   scatesdk-react:
     :path: "../.."
   Yoga:

@@ -365,6 +365,27 @@ export default function App() {
       ScateSDK.OnboardingPaywallShown();
       ScateSDK.OnboardingPaywallClosed();
 
+      ScateSDK.SubscriptionSuccess();
+      ScateSDK.InAppPurchaseSuccess();
+      ScateSDK.SubsStart();
+      ScateSDK.SubsSuccess();
+      ScateSDK.SubsFail();
+      ScateSDK.SubsCancel();
+
+      ScateSDK.ContentCreateStart();
+      ScateSDK.ContentCreateSuccess();
+      ScateSDK.ContentCreateFail();
+
+      ScateSDK.AllServicesInitialized();
+
+      ScateSDK.EventWithValue('content_created', 'paid');
+      ScateSDK.EventWithValue('content_created', 'free');
+
+      ScateSDK.EventWithValue('subscription_weekly', 'OB');
+      ScateSDK.EventWithValue('subscription_weekly', '');
+      ScateSDK.EventWithValue('subscription_yearly', 'OB');
+      ScateSDK.EventWithValue('subscription_yearly', '');
+
       // Example usage of ScateSDK remote config.
       // Use these function if you have set up remote config in your Scate dashboard.
       let r = await ScateSDK.GetRemoteConfig('test', 'default');

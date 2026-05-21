@@ -364,6 +364,66 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
+  @objc(SubscriptionSuccess:withRejecter:)
+  func SubscriptionSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubscriptionSuccess()
+    resolve(nil)
+  }
+
+  @objc(InAppPurchaseSuccess:withRejecter:)
+  func InAppPurchaseSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.InAppPurchaseSuccess()
+    resolve(nil)
+  }
+
+  @objc(ContentCreateStart:withRejecter:)
+  func ContentCreateStart(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ContentCreateStart()
+    resolve(nil)
+  }
+
+  @objc(ContentCreateSuccess:withRejecter:)
+  func ContentCreateSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ContentCreateSuccess()
+    resolve(nil)
+  }
+
+  @objc(ContentCreateFail:withRejecter:)
+  func ContentCreateFail(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ContentCreateFail()
+    resolve(nil)
+  }
+
+  @objc(SubsStart:withRejecter:)
+  func SubsStart(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubsStart()
+    resolve(nil)
+  }
+
+  @objc(SubsSuccess:withRejecter:)
+  func SubsSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubsSuccess()
+    resolve(nil)
+  }
+
+  @objc(SubsFail:withRejecter:)
+  func SubsFail(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubsFail()
+    resolve(nil)
+  }
+
+  @objc(SubsCancel:withRejecter:)
+  func SubsCancel(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubsCancel()
+    resolve(nil)
+  }
+
+  @objc(AllServicesInitialized:withRejecter:)
+  func AllServicesInitialized(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.AllServicesInitialized()
+    resolve(nil)
+  }
+
   @objc(ShowEventList:withRejecter:)
   func ShowEventList(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.ShowEventList()
