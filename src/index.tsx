@@ -112,6 +112,14 @@ export class ScateSDK {
     return _ScateSDK.GetUserID();
   }
 
+  public static GetSdkMetadata(): Promise<{
+    sdkNativeVersion?: string;
+    sdkPlatformVersion?: string;
+    sdkPlatform?: string;
+  }> {
+    return _ScateSDK.GetSdkMetadata();
+  }
+
   public static HandleEvent(name: string, event: ScateEventPayload) {
     const listener = this.listeners.get(name);
     console.log(event);

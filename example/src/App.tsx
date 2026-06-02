@@ -5,12 +5,33 @@ import { ScateEvents, ScateSDK } from 'scatesdk-react';
 
 const adjustToken = '19atefbehslc';
 
+type SdkMetadata = Awaited<ReturnType<typeof ScateSDK.GetSdkMetadata>>;
+
 export default function App() {
   const [result, setResult] = React.useState<string | undefined>();
   const [success, setSuccess] = React.useState<boolean>(false);
   const [adjustStatus, setAdjustStatus] =
     React.useState<string>('Adjust not started');
   const [adjustId, setAdjustId] = React.useState<string | undefined>();
+  const [appMetadata, setAppMetadata] = React.useState<SdkMetadata | null>(
+    null
+  );
+  const [appMetadataError, setAppMetadataError] = React.useState<
+    string | undefined
+  >();
+
+  const loadAppMetadata = React.useCallback(async () => {
+    try {
+      setAppMetadataError(undefined);
+      const metadata = await ScateSDK.GetSdkMetadata();
+      setAppMetadata(metadata);
+    } catch (error) {
+      setAppMetadata(null);
+      setAppMetadataError(
+        error instanceof Error ? error.message : 'Failed to load metadata'
+      );
+    }
+  }, []);
 
   const showPaywall = () => {
     //For media you can also use image path like this
@@ -289,6 +310,7 @@ export default function App() {
 
       await ScateSDK.Init('uw2YK', { debug: true });
       console.log('Scate userId:', await ScateSDK.GetUserID());
+      await loadAppMetadata();
 
       try {
         setAdjustStatus('Adjust initializing');
@@ -394,11 +416,11 @@ export default function App() {
       //ScateSDK.RemoveListener(ScateEvents.REMOTE_CONFIG_READY);
       //ScateSDK.ClearListeners(ScateEvents.REMOTE_CONFIG_READY);
 
-      //ScateSDK.ShowEventList();
+      ScateSDK.ShowEventList();
     };
 
     fetchData();
-  }, []);
+  }, [loadAppMetadata]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -412,6 +434,27 @@ export default function App() {
         <Text style={styles.label}>Adjust</Text>
         <Text>Status: {adjustStatus}</Text>
         <Text selectable={true}>ADID: {adjustId ?? 'waiting'}</Text>
+      </View>
+      <View style={styles.statusGroup}>
+        <Text style={styles.label}>App metadata</Text>
+        {appMetadataError ? (
+          <Text style={styles.errorText}>Error: {appMetadataError}</Text>
+        ) : appMetadata ? (
+          <>
+            <Text selectable={true}>
+              Native SDK: {appMetadata.sdkNativeVersion ?? '—'}
+            </Text>
+            <Text selectable={true}>
+              Platform: {appMetadata.sdkPlatform ?? '—'}
+            </Text>
+            <Text selectable={true}>
+              React SDK version: {appMetadata.sdkPlatformVersion ?? '—'}
+            </Text>
+          </>
+        ) : (
+          <Text>Loading…</Text>
+        )}
+        <Button title="Refresh metadata" onPress={loadAppMetadata} />
       </View>
       <View style={styles.actions}>
         <Button title="Show Paywall" onPress={showPaywall} />
@@ -441,6 +484,9 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     fontWeight: '600',
+  },
+  errorText: {
+    color: '#c62828',
   },
   actions: {
     width: '100%',

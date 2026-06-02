@@ -45,6 +45,9 @@ RCT_EXTERN_METHOD(GetUserID:(RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(AddListener:(NSString*) name)
 RCT_EXTERN_METHOD(RemoveListener:(NSString*) name)
 
+RCT_EXTERN_METHOD(GetSdkMetadata:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
 
 //Event functions
 

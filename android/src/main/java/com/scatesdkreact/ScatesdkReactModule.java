@@ -36,7 +36,17 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void Init(String appID, ReadableMap options, Promise promise) {
     try {
-      ScateCoreSDK.init(appID, reactContext.getApplicationContext());
+      boolean debug = false;
+      if (options != null && options.hasKey("debug")) {
+        debug = options.getBoolean("debug");
+      }
+      ScateCoreSDK.debug = debug;
+      ScateCoreSDK.init(
+        appID,
+        reactContext.getApplicationContext(),
+        BuildConfig.INTEGRATION,
+        BuildConfig.REACT_SDK_VERSION
+      );
       promise.resolve(null);
     } catch (Exception e) {
       promise.reject("InitError", e);
@@ -549,6 +559,19 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
       // Empty implementation
       promise.resolve(null);
     }
+
+  @ReactMethod
+  public void GetSdkMetadata(Promise promise) {
+    try {
+      WritableMap metadata = Arguments.createMap();
+      metadata.putString("sdkNativeVersion", ScateCoreSDK.GetSdkNativeVersion());
+      metadata.putString("sdkPlatformVersion", BuildConfig.REACT_SDK_VERSION);
+      metadata.putString("sdkPlatform", BuildConfig.INTEGRATION);
+      promise.resolve(metadata);
+    } catch (Exception e) {
+      promise.reject("GetSdkMetadata", e);
+    }
+  }
 
   @ReactMethod
   public void SubscriptionSuccess(Promise promise) {

@@ -24,6 +24,9 @@ class ScateSDK: RCTEventEmitter {
       configuration.firebaseUserIdSyncEnabled = firebaseUserIdSyncEnabled
     }
 
+    configuration.sdkPlatform = "react-native"
+    configuration.sdkPlatformVersion = ScatesdkReactVersion.value
+
     ScateCoreSDK.Init(appID: appID, configuration: configuration)
     resolve("")
   }
@@ -428,5 +431,15 @@ class ScateSDK: RCTEventEmitter {
   func ShowEventList(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.ShowEventList()
     resolve(nil)
+  }
+
+  @objc(GetSdkMetadata:withRejecter:)
+  func GetSdkMetadata(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    let metadata: [String: String] = [
+      "sdkNativeVersion": ScateCoreSDK.GetSdkNativeVersion(),
+      "sdkPlatformVersion": ScatesdkReactVersion.value,
+      "sdkPlatform": "react-native",
+    ]
+    resolve(metadata)
   }
 }
