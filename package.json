@@ -31,7 +31,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "prepare": "bob build",
+    "sync-ios-version": "node scripts/sync-ios-version.mjs",
+    "prepare": "yarn sync-ios-version && bob build",
     "release": "release-it"
   },
   "keywords": [
@@ -97,6 +98,9 @@
     ]
   },
   "release-it": {
+    "hooks": {
+      "after:bump": "yarn sync-ios-version"
+    },
     "git": {
       "commitMessage": "chore: release ${version}",
       "tagName": "v${version}"

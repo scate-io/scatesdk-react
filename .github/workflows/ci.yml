@@ -145,6 +145,8 @@ jobs:
         if: env.turbo_cache_hit != 1
         run: |
           cd example/ios
+          # Restored Pods cache can leave stale Local Podspecs for external podspecs (e.g. ScateSDK).
+          rm -rf "Pods/Local Podspecs"
           pod install
         env:
           NO_FLIPPER: 1
