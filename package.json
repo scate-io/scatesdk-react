@@ -32,7 +32,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "sync-ios-version": "node scripts/sync-ios-version.mjs",
-    "prepare": "yarn sync-ios-version && bob build",
+    "prepare": "node scripts/sync-ios-version.mjs && bob build",
     "release": "release-it"
   },
   "keywords": [
@@ -99,7 +99,7 @@
   },
   "release-it": {
     "hooks": {
-      "after:bump": "yarn sync-ios-version"
+      "after:bump": "node scripts/sync-ios-version.mjs"
     },
     "git": {
       "commitMessage": "chore: release ${version}",
