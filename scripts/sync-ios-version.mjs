@@ -10,7 +10,7 @@ const outPath = join(root, 'ios/ScatesdkReactVersion.swift');
 
 writeFileSync(
   outPath,
-  `// Generated from package.json — do not edit manually. Run: yarn sync-ios-version
+  `// Generated from package.json — do not edit manually.
 enum ScatesdkReactVersion {
   static let value = "${version}"
 }

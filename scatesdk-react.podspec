@@ -2,10 +2,16 @@ require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
-sync_script = File.join(__dir__, "scripts/sync-ios-version.mjs")
-unless system("node", sync_script)
-  raise "Failed to sync ios/ScatesdkReactVersion.swift from package.json"
-end
+version_swift_path = File.join(__dir__, "ios/ScatesdkReactVersion.swift")
+File.write(
+  version_swift_path,
+  <<~SWIFT
+    // Generated from package.json — do not edit manually.
+    enum ScatesdkReactVersion {
+      static let value = "#{package['version']}"
+    }
+  SWIFT
+)
 
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
 

@@ -1,4 +1,4 @@
-// Generated from package.json — do not edit manually. Run: yarn sync-ios-version
+// Generated from package.json — do not edit manually.
 enum ScatesdkReactVersion {
   static let value = "7.0.3"
 }
