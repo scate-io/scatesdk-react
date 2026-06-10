@@ -179,6 +179,10 @@ export class ScateSDK {
     return _ScateSDK.OnboardingStep(step);
   }
 
+  public static FunnelStep(step: string) {
+    return _ScateSDK.FunnelStep(step);
+  }
+
   public static OnboardingFinish() {
     return _ScateSDK.OnboardingFinish();
   }
@@ -263,6 +267,10 @@ export class ScateSDK {
     return _ScateSDK.TabClicked(tab);
   }
 
+  public static TabView(tab: string) {
+    return _ScateSDK.TabView(tab);
+  }
+
   public static FeatureClicked(feature: string) {
     return _ScateSDK.FeatureClicked(feature);
   }
@@ -339,6 +347,26 @@ export class ScateSDK {
     return _ScateSDK.SubscriptionSuccess();
   }
 
+  public static SubscriptionWeekly(source: string) {
+    return _ScateSDK.SubscriptionWeekly(source);
+  }
+
+  public static SubscriptionMonthly(source: string) {
+    return _ScateSDK.SubscriptionMonthly(source);
+  }
+
+  public static SubscriptionYearly(source: string) {
+    return _ScateSDK.SubscriptionYearly(source);
+  }
+
+  public static PurchaseFailed(source: string) {
+    return _ScateSDK.PurchaseFailed(source);
+  }
+
+  public static PurchaseRestored(source: string) {
+    return _ScateSDK.PurchaseRestored(source);
+  }
+
   public static InAppPurchaseSuccess() {
     return _ScateSDK.InAppPurchaseSuccess();
   }
@@ -353,6 +381,26 @@ export class ScateSDK {
 
   public static ContentCreateFail() {
     return _ScateSDK.ContentCreateFail();
+  }
+
+  public static ContentCreated(content: string) {
+    return _ScateSDK.ContentCreated(content);
+  }
+
+  public static Like() {
+    return _ScateSDK.Like();
+  }
+
+  public static Dislike() {
+    return _ScateSDK.Dislike();
+  }
+
+  public static OutputSuccess() {
+    return _ScateSDK.OutputSuccess();
+  }
+
+  public static OutputFail() {
+    return _ScateSDK.OutputFail();
   }
 
   public static SubsStart() {

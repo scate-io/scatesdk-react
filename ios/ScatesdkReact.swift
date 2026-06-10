@@ -133,6 +133,12 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
+  @objc(FunnelStep:withResolver:withRejecter:)
+  func FunnelStep(step: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.FunnelStep(step: step)
+    resolve(nil)
+  }
+
   @objc(OnboardingFinish:withRejecter:)
   func OnboardingFinish(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.OnboardingFinish()
@@ -259,6 +265,12 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
+  @objc(TabView:withResolver:withRejecter:)
+  func TabView(tab: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.TabView(tab: tab)
+    resolve(nil)
+  }
+
   @objc(FeatureClicked:withResolver:withRejecter:)
   func FeatureClicked(feature: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.FeatureClicked(feature: feature)
@@ -373,6 +385,36 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
+  @objc(SubscriptionWeekly:withResolver:withRejecter:)
+  func SubscriptionWeekly(source: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubscriptionWeekly(source: source)
+    resolve(nil)
+  }
+
+  @objc(SubscriptionMonthly:withResolver:withRejecter:)
+  func SubscriptionMonthly(source: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubscriptionMonthly(source: source)
+    resolve(nil)
+  }
+
+  @objc(SubscriptionYearly:withResolver:withRejecter:)
+  func SubscriptionYearly(source: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.SubscriptionYearly(source: source)
+    resolve(nil)
+  }
+
+  @objc(PurchaseFailed:withResolver:withRejecter:)
+  func PurchaseFailed(source: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.PurchaseFailed(source: source)
+    resolve(nil)
+  }
+
+  @objc(PurchaseRestored:withResolver:withRejecter:)
+  func PurchaseRestored(source: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.PurchaseRestored(source: source)
+    resolve(nil)
+  }
+
   @objc(InAppPurchaseSuccess:withRejecter:)
   func InAppPurchaseSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.InAppPurchaseSuccess()
@@ -394,6 +436,36 @@ class ScateSDK: RCTEventEmitter {
   @objc(ContentCreateFail:withRejecter:)
   func ContentCreateFail(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.ContentCreateFail()
+    resolve(nil)
+  }
+
+  @objc(ContentCreated:withResolver:withRejecter:)
+  func ContentCreated(content: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.ContentCreated(content: content)
+    resolve(nil)
+  }
+
+  @objc(Like:withRejecter:)
+  func Like(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.Like()
+    resolve(nil)
+  }
+
+  @objc(Dislike:withRejecter:)
+  func Dislike(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.Dislike()
+    resolve(nil)
+  }
+
+  @objc(OutputSuccess:withRejecter:)
+  func OutputSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.OutputSuccess()
+    resolve(nil)
+  }
+
+  @objc(OutputFail:withRejecter:)
+  func OutputFail(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    ScateCoreSDK.OutputFail()
     resolve(nil)
   }
 

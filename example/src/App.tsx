@@ -407,6 +407,16 @@ export default function App() {
       ScateSDK.EventWithValue('subscription_weekly', '');
       ScateSDK.EventWithValue('subscription_yearly', 'OB');
       ScateSDK.EventWithValue('subscription_yearly', '');
+      ScateSDK.OutputFail();
+      ScateSDK.OutputSuccess();
+      ScateSDK.Like();
+      ScateSDK.Dislike();
+      ScateSDK.ContentCreated('content');
+      ScateSDK.ContentCreateStart();
+      ScateSDK.ContentCreateSuccess();
+      ScateSDK.ContentCreateFail();
+      ScateSDK.ContentCreated('content');
+      ScateSDK.ContentCreateStart();
 
       // Example usage of ScateSDK remote config.
       // Use these function if you have set up remote config in your Scate dashboard.

@@ -195,6 +195,16 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void FunnelStep(String step, Promise promise) {
+    try {
+      ScateCoreSDK.FunnelStep(step);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("FunnelStep", e);
+    }
+  }
+
+  @ReactMethod
   public void OnboardingFinish (Promise promise) {
     try {
       ScateCoreSDK.OnboardingFinish();
@@ -405,6 +415,16 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void TabView(String tab, Promise promise)  {
+    try {
+      ScateCoreSDK.TabView(tab);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("TabView", e);
+    }
+  }
+
+  @ReactMethod
   public void FeatureClicked(String feature, Promise promise)  {
     try {
       ScateCoreSDK.FeatureClicked(feature);
@@ -584,6 +604,56 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void SubscriptionWeekly(String source, Promise promise) {
+    try {
+      ScateCoreSDK.SubscriptionWeekly(source);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubscriptionWeekly", e);
+    }
+  }
+
+  @ReactMethod
+  public void SubscriptionMonthly(String source, Promise promise) {
+    try {
+      ScateCoreSDK.SubscriptionMonthly(source);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubscriptionMonthly", e);
+    }
+  }
+
+  @ReactMethod
+  public void SubscriptionYearly(String source, Promise promise) {
+    try {
+      ScateCoreSDK.SubscriptionYearly(source);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SubscriptionYearly", e);
+    }
+  }
+
+  @ReactMethod
+  public void PurchaseFailed(String source, Promise promise) {
+    try {
+      ScateCoreSDK.PurchaseFailed(source);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("PurchaseFailed", e);
+    }
+  }
+
+  @ReactMethod
+  public void PurchaseRestored(String source, Promise promise) {
+    try {
+      ScateCoreSDK.PurchaseRestored(source);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("PurchaseRestored", e);
+    }
+  }
+
+  @ReactMethod
   public void InAppPurchaseSuccess(Promise promise) {
     try {
       ScateCoreSDK.InAppPurchaseSuccess();
@@ -620,6 +690,56 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
       promise.resolve(null);
     } catch (Exception e) {
       promise.reject("ContentCreateFail", e);
+    }
+  }
+
+  @ReactMethod
+  public void ContentCreated(String content, Promise promise) {
+    try {
+      ScateCoreSDK.ContentCreated(content);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("ContentCreated", e);
+    }
+  }
+
+  @ReactMethod
+  public void Like(Promise promise) {
+    try {
+      ScateCoreSDK.Like();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("Like", e);
+    }
+  }
+
+  @ReactMethod
+  public void Dislike(Promise promise) {
+    try {
+      ScateCoreSDK.Dislike();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("Dislike", e);
+    }
+  }
+
+  @ReactMethod
+  public void OutputSuccess(Promise promise) {
+    try {
+      ScateCoreSDK.OutputSuccess();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("OutputSuccess", e);
+    }
+  }
+
+  @ReactMethod
+  public void OutputFail(Promise promise) {
+    try {
+      ScateCoreSDK.OutputFail();
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("OutputFail", e);
     }
   }
 
