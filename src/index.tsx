@@ -179,8 +179,8 @@ export class ScateSDK {
     return _ScateSDK.OnboardingStep(step);
   }
 
-  public static FunnelStep(step: string) {
-    return _ScateSDK.FunnelStep(step);
+  public static FunnelStep(step: string, answer?: string) {
+    return _ScateSDK.FunnelStep(step, answer ?? null);
   }
 
   public static OnboardingFinish() {

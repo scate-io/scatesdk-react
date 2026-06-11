@@ -133,9 +133,13 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
-  @objc(FunnelStep:withResolver:withRejecter:)
-  func FunnelStep(step: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.FunnelStep(step: step)
+  @objc(FunnelStep:answer:withResolver:withRejecter:)
+  func FunnelStep(step: String, answer: String?, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+    if let answer = answer, !answer.isEmpty {
+      ScateCoreSDK.FunnelStep(step: step, answer: answer)
+    } else {
+      ScateCoreSDK.FunnelStep(step: step)
+    }
     resolve(nil)
   }
 

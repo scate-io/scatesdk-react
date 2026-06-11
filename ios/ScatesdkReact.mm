@@ -59,6 +59,7 @@ RCT_EXTERN_METHOD(OnboardingStep:(NSString *)step
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(FunnelStep:(NSString *)step
+                 answer:(NSString *)answer
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 

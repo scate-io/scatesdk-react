@@ -195,9 +195,13 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void FunnelStep(String step, Promise promise) {
+  public void FunnelStep(String step, String answer, Promise promise) {
     try {
-      ScateCoreSDK.FunnelStep(step);
+      if (answer != null && !answer.isEmpty()) {
+        ScateCoreSDK.FunnelStep(step, answer);
+      } else {
+        ScateCoreSDK.FunnelStep(step);
+      }
       promise.resolve(null);
     } catch (Exception e) {
       promise.reject("FunnelStep", e);

@@ -46,7 +46,7 @@ To do this, add the following to your proguard-rules.pro file:
 
 ## iOS Integration
 
-This wrapper version uses `ScateSDK` 7.0.7 or newer and Adjust 5.6.1 or newer for Adjust integration. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist if you want ScateSDK to request App Tracking Transparency authorization.
+This wrapper version uses `ScateSDK` 7.0.8 or newer and Adjust 5.6.1 or newer for Adjust integration. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist if you want ScateSDK to request App Tracking Transparency authorization.
 
 If CocoaPods reports that the Swift pod `scatesdk-react` depends on Adjust and Adjust does not define modules, add Adjust as a modular header in the app Podfile:
 
