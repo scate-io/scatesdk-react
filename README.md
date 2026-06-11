@@ -7,7 +7,7 @@ npm install scatesdk-react
 ## Android Integration
 
 To ensure that the ScateSDK works properly on Android, you need to add the Maven repository to your build.gradle file.
-This wrapper version uses `com.scate:scatesdk:7.0.7` or newer for Adjust integration and parameterized events.
+This wrapper version uses `com.scate:scatesdk:7.0.8` or newer for Adjust integration and parameterized events.
 
 In your project's android/build.gradle file, add the following Maven repository:
 
