@@ -7,7 +7,7 @@ npm install scatesdk-react
 ## Android Integration
 
 To ensure that the ScateSDK works properly on Android, you need to add the Maven repository to your build.gradle file.
-This wrapper version uses `com.scate:scatesdk:7.0.8` or newer for Adjust integration and parameterized events.
+This wrapper version uses `com.scate:scatesdk:7.0.10` or newer for Adjust integration and parameterized events.
 
 In your project's android/build.gradle file, add the following Maven repository:
 
@@ -46,7 +46,7 @@ To do this, add the following to your proguard-rules.pro file:
 
 ## iOS Integration
 
-This wrapper version uses `ScateSDK` 7.0.8 or newer and Adjust 5.6.1 or newer for Adjust integration. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist if you want ScateSDK to request App Tracking Transparency authorization.
+This wrapper version uses `ScateSDK` 7.0.9 or newer and Adjust 5.6.1 or newer for Adjust integration. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist if you want ScateSDK to request App Tracking Transparency authorization.
 
 If CocoaPods reports that the Swift pod `scatesdk-react` depends on Adjust and Adjust does not define modules, add Adjust as a modular header in the app Podfile:
 
