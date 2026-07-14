@@ -1,6 +1,6 @@
 {
   "name": "scatesdk-react",
-  "version": "7.0.7",
+  "version": "7.0.8",
   "description": "Scate SDK is made for developers to integrate Scate's services into their apps. Please visit https://www.scate.io for more information.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
