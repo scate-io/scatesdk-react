@@ -444,6 +444,12 @@ export default function App() {
         <Text style={styles.label}>Adjust</Text>
         <Text>Status: {adjustStatus}</Text>
         <Text selectable={true}>ADID: {adjustId ?? 'waiting'}</Text>
+        <Button
+          title="Send dummy email (SetAdjustGlobalPartnerParameter)"
+          onPress={() =>
+            ScateSDK.SetAdjustGlobalPartnerParameter('test@example.com')
+          }
+        />
       </View>
       <View style={styles.statusGroup}>
         <Text style={styles.label}>App metadata</Text>

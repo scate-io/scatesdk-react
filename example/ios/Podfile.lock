@@ -1169,9 +1169,9 @@ PODS:
     - React-logger (= 0.74.1)
     - React-perflogger (= 0.74.1)
     - React-utils (= 0.74.1)
-  - ScateSDK (7.0.8):
+  - ScateSDK (7.0.11):
     - Adjust (~> 5.6.1)
-  - scatesdk-react (7.0.6):
+  - scatesdk-react (7.0.8):
     - Adjust (~> 5.6.1)
     - DoubleConversion
     - glog
@@ -1192,7 +1192,7 @@ PODS:
     - React-utils
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - ScateSDK (= 7.0.8)
+    - ScateSDK (= 7.0.11)
     - Yoga
   - SocketRocket (0.7.0)
   - Yoga (0.0.0)
@@ -1254,7 +1254,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - ScateSDK (from `https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.8/ScateSDK.podspec`)
+  - ScateSDK (from `https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.11/ScateSDK.podspec`)
   - scatesdk-react (from `../..`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1373,7 +1373,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   ScateSDK:
-    :podspec: https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.8/ScateSDK.podspec
+    :podspec: https://raw.githubusercontent.com/scate-io/ScateSDK-ios/v7.0.11/ScateSDK.podspec
   scatesdk-react:
     :path: "../.."
   Yoga:
@@ -1435,11 +1435,11 @@ SPEC CHECKSUMS:
   React-runtimescheduler: e2152ed146b6a35c07386fc2ac4827b27e6aad12
   React-utils: 3285151c9d1e3a28a9586571fc81d521678c196d
   ReactCommon: f42444e384d82ab89184aed5d6f3142748b54768
-  ScateSDK: 3fcfa97d300bc2f91229a8687ade362f630012e3
-  scatesdk-react: b887f61b25d037c8cea34f294b21004ed8512e00
+  ScateSDK: e83d6b4ffe020383ccbe03e830d74ae8ee90f7c2
+  scatesdk-react: 3a8c746add108d17effd6a10b7d4a35a8d4882c2
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 348f8b538c3ed4423eb58a8e5730feec50bce372
 
-PODFILE CHECKSUM: 87deda88457a92e10cdc305f87d662084c1ade2b
+PODFILE CHECKSUM: 93653a8de22dd822d1462ccd772637424abddc40
 
 COCOAPODS: 1.16.2
