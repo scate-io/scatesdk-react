@@ -74,6 +74,10 @@ export class ScateSDK {
     return _ScateSDK.SetAdid(adid);
   }
 
+  public static SetAdjustGlobalPartnerParameter(email: string): Promise<void> {
+    return _ScateSDK.SetAdjustGlobalPartnerParameter(email);
+  }
+
   public static InitAdjust(
     adjustToken: string,
     options: ScateAdjustOptions = {}
