@@ -12,6 +12,10 @@ RCT_EXTERN_METHOD(SetAdid:(NSString *)adid
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(SetAdjustGlobalPartnerParameter:(NSString *)email
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(InitAdjust:(NSString *)adjustToken
                  withOptions:(NSDictionary *)options
                  withResolver:(RCTPromiseResolveBlock)resolve

@@ -64,6 +64,16 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void SetAdjustGlobalPartnerParameter(String email, Promise promise) {
+    try {
+      ScateCoreSDK.SetAdjustGlobalPartnerParameter(email);
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("SetAdjustGlobalPartnerParameterError", e);
+    }
+  }
+
+  @ReactMethod
   public void InitAdjust(String adjustToken, ReadableMap options, Promise promise) {
     try {
       boolean noATT = options != null && options.hasKey("noATT") && options.getBoolean("noATT");

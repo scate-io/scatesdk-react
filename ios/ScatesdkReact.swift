@@ -37,6 +37,12 @@ class ScateSDK: RCTEventEmitter {
     resolve("")
   }
 
+  @objc(SetAdjustGlobalPartnerParameter:withResolver:withRejecter:)
+  func SetAdjustGlobalPartnerParameter(email: String, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    ScateCoreSDK.SetAdjustGlobalPartnerParameter(email: email)
+    resolve("")
+  }
+
   @objc(InitAdjust:withOptions:withResolver:withRejecter:)
   func InitAdjust(adjustToken: String, options: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
     let noATT = options?["noATT"] as? Bool ?? false
