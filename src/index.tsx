@@ -105,6 +105,18 @@ export class ScateSDK {
     return _ScateSDK.EventWithValue(name, customValue);
   }
 
+  public static EventWithValueAndParameters(
+    name: string,
+    customValue: string,
+    parameters?: ScateEventParameters
+  ): Promise<void> {
+    return _ScateSDK.EventWithValueAndParameters(
+      name,
+      customValue,
+      parameters ?? null
+    );
+  }
+
   public static GetRemoteConfig(
     key: string,
     defaultValue: string

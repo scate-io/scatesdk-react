@@ -78,6 +78,12 @@ class ScateSDK: RCTEventEmitter {
     resolve("")
   }
 
+  @objc(EventWithValueAndParameters:withCustomValue:withParameters:withResolver:withRejecter:)
+  func EventWithValueAndParameters(name: String, value: String, parameters: NSDictionary?, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+    ScateCoreSDK.Event(name: name, customValue: value, parameters: parameters)
+    resolve("")
+  }
+
   @objc(GetRemoteConfig:withDefaultValue:withResolver:withRejecter:)
   func GetRemoteConfig(key: String, defaultValue: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
     let config = ScateCoreSDK.GetRemoteConfig(key: key, defaultValue: defaultValue)

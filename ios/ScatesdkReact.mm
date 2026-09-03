@@ -38,6 +38,12 @@ RCT_EXTERN_METHOD(EventWithValue:(NSString *)name
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(EventWithValueAndParameters:(NSString *)name
+                  withCustomValue:(NSString* )customValue
+                  withParameters:(NSDictionary *)parameters
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(GetRemoteConfig:(NSString *)key
                  withDefaultValue:(NSString *)defaultValue
                  withResolver:(RCTPromiseResolveBlock)resolve
