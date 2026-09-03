@@ -113,6 +113,16 @@ Use this only when you need the legacy `customValue` field.
 ScateSDK.EventWithValue('button_clicked', 'subscribe_btn');
 ```
 
+### Send Events with a Custom Value and Parameters
+
+Send a `customValue` and a `parameters` dictionary together in a single event.
+
+```js
+ScateSDK.EventWithValueAndParameters('result', 'grade_changed', {
+  grade: 'PSA10',
+});
+```
+
 ### Get Remote Config for Key
 
 ```js

@@ -3,6 +3,7 @@ describe('ScateSDK.Event', () => {
     const mockScateSDK = {
       Event: jest.fn(),
       EventWithValue: jest.fn(),
+      EventWithValueAndParameters: jest.fn(),
       GetAdjustId: jest.fn(),
       GetUserID: jest.fn(),
       InitAdjust: jest.fn(),
@@ -61,6 +62,31 @@ describe('ScateSDK.Event', () => {
     expect(mockScateSDK.EventWithValue).toHaveBeenCalledWith(
       'button_clicked',
       'subscribe_btn'
+    );
+  });
+
+  it('sends custom value and parameters together', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+    const parameters = { page: 'market', grade: 'PSA10' };
+
+    ScateSDK.EventWithValueAndParameters('result', 'grade_changed', parameters);
+
+    expect(mockScateSDK.EventWithValueAndParameters).toHaveBeenCalledWith(
+      'result',
+      'grade_changed',
+      parameters
+    );
+  });
+
+  it('passes null parameters when none are provided to EventWithValueAndParameters', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+
+    ScateSDK.EventWithValueAndParameters('result', 'view_sold_listings');
+
+    expect(mockScateSDK.EventWithValueAndParameters).toHaveBeenCalledWith(
+      'result',
+      'view_sold_listings',
+      null
     );
   });
 
