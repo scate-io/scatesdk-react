@@ -129,3 +129,46 @@ describe('ScateSDK.Event', () => {
     expect(mockScateSDK.GetAdjustId).toHaveBeenCalledWith(callback);
   });
 });
+
+describe('ScateSDK remote config getters', () => {
+  const loadScateSDK = () => {
+    const mockScateSDK = {
+      GetRemoteConfig: jest.fn(),
+      GetRemoteConfigBool: jest.fn(),
+      GetRemoteConfigInt: jest.fn(),
+      GetRemoteConfigDouble: jest.fn(),
+    };
+
+    jest.resetModules();
+    jest.doMock('react-native', () => ({
+      NativeModules: {
+        ScateSDK: mockScateSDK,
+      },
+      NativeEventEmitter: jest.fn().mockImplementation(() => ({
+        addListener: jest.fn(),
+      })),
+      Platform: {
+        select: jest.fn((options) => options.default),
+      },
+    }));
+
+    const { ScateSDK } = require('../index') as typeof import('../index');
+    return { ScateSDK, mockScateSDK };
+  };
+
+  afterEach(() => {
+    jest.dontMock('react-native');
+  });
+
+  it('passes the key and the typed default to the native module', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+
+    ScateSDK.GetRemoteConfigBool('new_camera', false);
+    ScateSDK.GetRemoteConfigInt('scan_limit', 10);
+    ScateSDK.GetRemoteConfigDouble('crop_ratio', 1.5);
+
+    expect(mockScateSDK.GetRemoteConfigBool).toHaveBeenCalledWith('new_camera', false);
+    expect(mockScateSDK.GetRemoteConfigInt).toHaveBeenCalledWith('scan_limit', 10);
+    expect(mockScateSDK.GetRemoteConfigDouble).toHaveBeenCalledWith('crop_ratio', 1.5);
+  });
+});

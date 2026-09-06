@@ -127,6 +127,11 @@ ScateSDK.EventWithValueAndParameters('result', 'grade_changed', {
 
 ```js
 ScateSDK.GetRemoteConfig('key', 'defaultValue');
+
+// Typed reads fall back to the default when the value is not of that type.
+const enabled = await ScateSDK.GetRemoteConfigBool('new_camera', false);
+const limit = await ScateSDK.GetRemoteConfigInt('scan_limit', 10);
+const ratio = await ScateSDK.GetRemoteConfigDouble('crop_ratio', 1.5);
 ```
 
 ### Add Listener

@@ -138,6 +138,33 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void GetRemoteConfigBool(String key, boolean defaultValue, Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.getRemoteConfigBoolean(key, defaultValue));
+    } catch (Exception e) {
+      promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetRemoteConfigInt(String key, int defaultValue, Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.getRemoteConfigInt(key, defaultValue));
+    } catch (Exception e) {
+      promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetRemoteConfigDouble(String key, double defaultValue, Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.getRemoteConfigDouble(key, defaultValue));
+    } catch (Exception e) {
+      promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
   public void GetUserID(Promise promise) {
     try {
       promise.resolve(ScateCoreSDK.GetUserID());

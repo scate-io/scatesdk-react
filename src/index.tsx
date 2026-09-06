@@ -124,6 +124,28 @@ export class ScateSDK {
     return _ScateSDK.GetRemoteConfig(key, defaultValue);
   }
 
+  // Typed reads fall back to the default when the value is not of that type.
+  public static GetRemoteConfigBool(
+    key: string,
+    defaultValue: boolean
+  ): Promise<boolean> {
+    return _ScateSDK.GetRemoteConfigBool(key, defaultValue);
+  }
+
+  public static GetRemoteConfigInt(
+    key: string,
+    defaultValue: number
+  ): Promise<number> {
+    return _ScateSDK.GetRemoteConfigInt(key, defaultValue);
+  }
+
+  public static GetRemoteConfigDouble(
+    key: string,
+    defaultValue: number
+  ): Promise<number> {
+    return _ScateSDK.GetRemoteConfigDouble(key, defaultValue);
+  }
+
   public static GetUserID(): Promise<string | null> {
     return _ScateSDK.GetUserID();
   }
