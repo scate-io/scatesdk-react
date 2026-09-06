@@ -167,8 +167,17 @@ describe('ScateSDK remote config getters', () => {
     ScateSDK.GetRemoteConfigInt('scan_limit', 10);
     ScateSDK.GetRemoteConfigDouble('crop_ratio', 1.5);
 
-    expect(mockScateSDK.GetRemoteConfigBool).toHaveBeenCalledWith('new_camera', false);
-    expect(mockScateSDK.GetRemoteConfigInt).toHaveBeenCalledWith('scan_limit', 10);
-    expect(mockScateSDK.GetRemoteConfigDouble).toHaveBeenCalledWith('crop_ratio', 1.5);
+    expect(mockScateSDK.GetRemoteConfigBool).toHaveBeenCalledWith(
+      'new_camera',
+      false
+    );
+    expect(mockScateSDK.GetRemoteConfigInt).toHaveBeenCalledWith(
+      'scan_limit',
+      10
+    );
+    expect(mockScateSDK.GetRemoteConfigDouble).toHaveBeenCalledWith(
+      'crop_ratio',
+      1.5
+    );
   });
 });
