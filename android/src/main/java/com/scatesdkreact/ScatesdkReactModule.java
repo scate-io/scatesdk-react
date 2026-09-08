@@ -128,6 +128,20 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void EventWithValueAndParameters(String name, String customValue, ReadableMap parameters, Promise promise) {
+    try {
+      if (parameters == null) {
+        ScateCoreSDK.event(name, customValue);
+      } else {
+        ScateCoreSDK.event(name, customValue, parameters.toHashMap());
+      }
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("EventWithValueAndParametersError", e);
+    }
+  }
+
+  @ReactMethod
   public void GetRemoteConfig(String key, String defaultValue, Promise promise) {
     try {
       String value = ScateCoreSDK.getRemoteConfig(key, defaultValue);

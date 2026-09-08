@@ -240,6 +240,12 @@ export default function App() {
             await ScateSDK.GetRemoteConfig('test', 'default')
           );
           let r = await ScateSDK.GetRemoteConfig('test', 'default');
+          console.log(
+            'Typed',
+            await ScateSDK.GetRemoteConfigBool('test', false),
+            await ScateSDK.GetRemoteConfigInt('test1', -1),
+            await ScateSDK.GetRemoteConfigDouble('test2', -1)
+          );
           // set state
           setResult(r);
           setSuccess(isSuccessful);
@@ -333,6 +339,11 @@ export default function App() {
         action: 'app_started',
         debug: __DEV__,
       });
+      ScateSDK.EventWithValueAndParameters(
+        'test-event-with-value-and-parameters',
+        'react_native_example',
+        { screen: 'react_native_example' }
+      );
       ScateSDK.OnboardingStart();
       ScateSDK.OnboardingStep('location_screen');
       ScateSDK.OnboardingStep('notification_screen');

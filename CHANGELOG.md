@@ -1,3 +1,12 @@
+## 7.0.14
+
+- `GetRemoteConfigBool`, `GetRemoteConfigInt`, `GetRemoteConfigDouble`: typed remote config reads
+  that fall back to the default when the value is not of that type.
+- Android: `EventWithValueAndParameters` now reaches the native SDK (it had no Android bridge
+  method, so calling it on Android failed).
+- Updated native ScateSDK dependencies to 7.0.14 on both platforms (A/B assignments,
+  `scate_remote_configs_loaded` / `scate_ab_assignment` events, typed getters).
+
 ## 7.0.13
 
 - Add `EventWithValueAndParameters(name, customValue, parameters)` so a single
