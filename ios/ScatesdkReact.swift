@@ -90,6 +90,21 @@ class ScateSDK: RCTEventEmitter {
     resolve(config)
   }
 
+  @objc(GetRemoteConfigBool:withDefaultValue:withResolver:withRejecter:)
+  func GetRemoteConfigBool(key: String, defaultValue: Bool, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+    resolve(ScateCoreSDK.GetRemoteConfigBool(key: key, defaultValue: defaultValue))
+  }
+
+  @objc(GetRemoteConfigInt:withDefaultValue:withResolver:withRejecter:)
+  func GetRemoteConfigInt(key: String, defaultValue: Int, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+    resolve(ScateCoreSDK.GetRemoteConfigInt(key: key, defaultValue: defaultValue))
+  }
+
+  @objc(GetRemoteConfigDouble:withDefaultValue:withResolver:withRejecter:)
+  func GetRemoteConfigDouble(key: String, defaultValue: Double, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+    resolve(ScateCoreSDK.GetRemoteConfigDouble(key: key, defaultValue: defaultValue))
+  }
+
   @objc(GetUserID:withRejecter:)
   func GetUserID(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     resolve(ScateCoreSDK.GetUserID())

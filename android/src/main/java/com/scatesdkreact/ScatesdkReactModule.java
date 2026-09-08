@@ -128,10 +128,51 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void EventWithValueAndParameters(String name, String customValue, ReadableMap parameters, Promise promise) {
+    try {
+      if (parameters == null) {
+        ScateCoreSDK.event(name, customValue);
+      } else {
+        ScateCoreSDK.event(name, customValue, parameters.toHashMap());
+      }
+      promise.resolve(null);
+    } catch (Exception e) {
+      promise.reject("EventWithValueAndParametersError", e);
+    }
+  }
+
+  @ReactMethod
   public void GetRemoteConfig(String key, String defaultValue, Promise promise) {
     try {
       String value = ScateCoreSDK.getRemoteConfig(key, defaultValue);
       promise.resolve(value);
+    } catch (Exception e) {
+      promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetRemoteConfigBool(String key, boolean defaultValue, Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.getRemoteConfigBoolean(key, defaultValue));
+    } catch (Exception e) {
+      promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetRemoteConfigInt(String key, int defaultValue, Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.getRemoteConfigInt(key, defaultValue));
+    } catch (Exception e) {
+      promise.reject("GetRemoteConfigError", e);
+    }
+  }
+
+  @ReactMethod
+  public void GetRemoteConfigDouble(String key, double defaultValue, Promise promise) {
+    try {
+      promise.resolve(ScateCoreSDK.getRemoteConfigDouble(key, defaultValue));
     } catch (Exception e) {
       promise.reject("GetRemoteConfigError", e);
     }

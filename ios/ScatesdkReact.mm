@@ -47,7 +47,22 @@ RCT_EXTERN_METHOD(EventWithValueAndParameters:(NSString *)name
 RCT_EXTERN_METHOD(GetRemoteConfig:(NSString *)key
                  withDefaultValue:(NSString *)defaultValue
                  withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)                 
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(GetRemoteConfigBool:(NSString *)key
+                 withDefaultValue:(BOOL)defaultValue
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(GetRemoteConfigInt:(NSString *)key
+                 withDefaultValue:(NSInteger)defaultValue
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(GetRemoteConfigDouble:(NSString *)key
+                 withDefaultValue:(double)defaultValue
+                 withResolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(GetUserID:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
