@@ -58,8 +58,14 @@ pod 'Adjust', '~> 5.6.1', :modular_headers => true
 
 ### Initialize the SDK
 
+Register the remote config listener before initializing. It fires once per initialization and is not replayed, so a listener registered afterwards never sees it.
+
 ```js
-import { ScateSDK } from 'scatesdk-react';
+import { ScateSDK, ScateEvents } from 'scatesdk-react';
+
+ScateSDK.AddListener(ScateEvents.REMOTE_CONFIG_READY, (fetched) => {
+  // Remote configs are ready. Read them, then continue app startup.
+});
 
 ScateSDK.Init('your app id');
 ScateSDK.InitAdjust('your adjust token');
@@ -68,6 +74,8 @@ ScateSDK.GetAdjustId((adid) => {
   // ADID is non-empty here.
 });
 ```
+
+Continue app startup — reading remote configs, leaving the splash screen — only after the listener fires. Add a timeout so a slow network cannot hold the splash.
 
 By default, on iOS, `InitAdjust` configures Adjust with a 120 second ATT consent wait interval and requests App Tracking Transparency authorization at init time. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist for the prompt to appear. Pass `noATT: true` to skip ScateSDK's ATT request path:
 
