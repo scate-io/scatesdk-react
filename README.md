@@ -74,14 +74,15 @@ ScateSDK.GetAdjustId((adid) => {
   // ADID is non-empty here.
 });
 
-// In your splash screen, before reading remote configs or showing the first screen.
-await Promise.race([
-  configsReady,
-  new Promise((resolve) => setTimeout(resolve, 2000)),
-]);
+// Call this from your splash, before reading remote configs or showing the first screen.
+export const waitForScateConfigs = () =>
+  Promise.race([
+    configsReady,
+    new Promise((resolve) => setTimeout(resolve, 2000)),
+  ]);
 ```
 
-`Init` returns immediately and never blocks on the network, so without this gate the first screen can render before any config has arrived. The timeout keeps a slow network from holding the splash.
+Do not read remote configs or show the first screen before the listener fires. `Init` returns immediately and never blocks on the network, so without this gate the app can render before any config has arrived. The timeout keeps a slow network from holding the splash.
 
 By default, on iOS, `InitAdjust` configures Adjust with a 120 second ATT consent wait interval and requests App Tracking Transparency authorization at init time. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist for the prompt to appear. Pass `noATT: true` to skip ScateSDK's ATT request path:
 
