@@ -63,7 +63,8 @@ Register the remote config listener before initializing. It fires once per initi
 ```js
 import { ScateSDK, ScateEvents } from 'scatesdk-react';
 
-const configsReady = new Promise((resolve) => {
+// Await this in your splash, before reading remote configs or showing the first screen.
+export const configsReady = new Promise((resolve) => {
   ScateSDK.AddListener(ScateEvents.REMOTE_CONFIG_READY, resolve);
 });
 
@@ -73,16 +74,9 @@ ScateSDK.InitAdjust('your adjust token');
 ScateSDK.GetAdjustId((adid) => {
   // ADID is non-empty here.
 });
-
-// Call this from your splash, before reading remote configs or showing the first screen.
-export const waitForScateConfigs = () =>
-  Promise.race([
-    configsReady,
-    new Promise((resolve) => setTimeout(resolve, 5000)),
-  ]);
 ```
 
-Do not read remote configs or show the first screen before the listener fires. `Init` returns immediately and never blocks on the network, so without this gate the app can render before any config has arrived. The listener always fires, `true` on a fresh fetch and `false` once retries are exhausted, but a failing network is retried several times first, so cap the wait instead of blocking on it. Five seconds is a reasonable cap, and a late answer still reaches the listener, so the app can pick up the values afterwards.
+Do not read remote configs or show the first screen before the listener fires. `Init` returns immediately and never blocks on the network, so without this gate the app can render before any config has arrived. The listener always fires, `true` on a fresh fetch and `false` once retries are exhausted. A failing network is retried several times first, so if a slow network must not hold the splash, cap the wait at around five seconds and continue with cached or default values; a late answer still reaches the listener either way.
 
 By default, on iOS, `InitAdjust` configures Adjust with a 120 second ATT consent wait interval and requests App Tracking Transparency authorization at init time. Add `NSUserTrackingUsageDescription` to the iOS app Info.plist for the prompt to appear. Pass `noATT: true` to skip ScateSDK's ATT request path:
 
