@@ -49,5 +49,7 @@
 	<false/>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>deliver personalized app experience</string>
+	<key>SKIncludeConsumableInAppPurchaseHistory</key>
+	<true/>
 </dict>
 </plist>
