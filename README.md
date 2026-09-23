@@ -54,6 +54,17 @@ If CocoaPods reports that the Swift pod `scatesdk-react` depends on Adjust and A
 pod 'Adjust', '~> 5.6.1', :modular_headers => true
 ```
 
+### Purchases
+
+ScateSDK notices purchases on its own; the app does not report them. Every time the app becomes active it sends
+StoreKit's transaction history to Scate, which keeps the purchases it has not seen before (iOS 15 and later). When the
+app uses Firebase Analytics, new purchases are also logged to Firebase as `in_app_purchase`, once each. No code is
+needed; do not also log purchases to Firebase yourself, or each one is counted twice.
+
+If the app sells consumables (credits, coins), set `SKIncludeConsumableInAppPurchaseHistory` to `YES` in
+`ios/<YourApp>/Info.plist`. Without it StoreKit drops a consumable from the history once it is finished, and ScateSDK never sees
+that purchase (iOS 18 and later).
+
 ## Usage
 
 ### Initialize the SDK
