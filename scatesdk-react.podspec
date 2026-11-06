@@ -27,7 +27,10 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/scate-io/scatesdk-react.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  s.dependency "ScateSDK", "7.0.23"
+  # The iOS SDK binary ships inside this package instead of coming from the ScateSDK pod:
+  # CocoaPods trunk is read-only from 2 December 2026. sdk-release.sh replaces it each release.
+  # It stays outside ios/ so source_files does not pick up the framework's headers.
+  s.vendored_frameworks = "vendor/ScateSDK.xcframework"
   s.dependency "Adjust/AdjustGoogleOdm", "~> 5.6.1"
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
