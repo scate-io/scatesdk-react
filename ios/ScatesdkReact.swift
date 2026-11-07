@@ -4,13 +4,7 @@ import ScateSDK
 @objc(ScateSDK)
 class ScateSDK: RCTEventEmitter {
   override func supportedEvents() -> [String]! {
-      return [ScateCoreSDK.RemoteConfigsReady.rawValue,
-      ScateCoreSDK.PaidProductClicked.rawValue,
-      ScateCoreSDK.OnboardingScreensFinished.rawValue,
-      ScateCoreSDK.PaywallScreenClosed.rawValue,
-      ScateCoreSDK.OnboardingScreenClosed.rawValue,
-      ScateCoreSDK.PaywallScreenFinished.rawValue,
-      ScateCoreSDK.RestorePurchaseClicked.rawValue]
+      return [ScateCoreSDK.RemoteConfigsReady.rawValue]
   }
 
   @objc(Init:withOptions:withResolver:withRejecter:)
@@ -365,42 +359,6 @@ class ScateSDK: RCTEventEmitter {
   @objc(OnboardingPaywallClosed:withRejecter:)
   func OnboardingPaywallClosed(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.OnboardingPaywallClosed()
-    resolve(nil)
-  }
-
-  @objc(ShowOnboarding:withResolver:withRejecter:)
-  func ShowOnboarding(jsonString: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ShowOnboarding(jsonString: jsonString)
-    resolve(nil)
-  }
-
-  @objc(ShowPaywall:withResolver:withRejecter:)
-  func ShowPaywall(jsonString: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ShowPaywall(jsonString: jsonString)
-    resolve(nil)
-  }
-
-  @objc(CloseOnboarding:withRejecter:)
-  func CloseOnboarding(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.CloseOnboarding()
-    resolve(nil)
-  }
-
-  @objc(ClosePaywall:withRejecter:)
-  func ClosePaywall(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ClosePaywall()
-    resolve(nil)
-  }
-
-  @objc(ShowPaidProductLoadingScreen:withRejecter:)
-  func ShowPaidProductLoadingScreen(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ShowPaidProductLoadingScreen()
-    resolve(nil)
-  }
-
-  @objc(ClosePaidProductLoadingScreen:withRejecter:)
-  func ClosePaidProductLoadingScreen(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ClosePaidProductLoadingScreen()
     resolve(nil)
   }
 

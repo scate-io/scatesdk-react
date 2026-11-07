@@ -21,12 +21,6 @@ const eventEmitter = new NativeEventEmitter(_ScateSDK);
 
 export enum ScateEvents {
   REMOTE_CONFIG_READY = 'Scate_RemoteConfigsReady',
-  PAID_PRODUCT_CLICKED = 'Scate_PaidProductClicked',
-  ONBOARDING_SCREENS_FINISHED = 'Scate_OnboardingScreensFinished',
-  PAYWALL_SCREEN_CLOSED = 'Scate_PaywallScreenClosed',
-  ONBOARDING_SCREEN_CLOSED = 'Scate_OnboardingScreenClosed',
-  PAYWALL_SCREEN_FINISHED = 'Scate_PaywallScreenFinished',
-  RESTORE_PURCHASE_CLICKED = 'Scate_RestorePurchaseClicked',
 }
 
 export type ScateInitOptions = {
@@ -161,24 +155,6 @@ export class ScateSDK {
       if (event.event === 'Scate_RemoteConfigsReady') {
         const remoteConfigFetched = event.data?.remoteConfigFetched;
         listener(remoteConfigFetched);
-      } else if (event.event === 'Scate_PaidProductClicked') {
-        const productClicked = event.data?.identifier;
-        listener(productClicked);
-      } else if (event.event === 'Scate_OnboardingScreensFinished') {
-        const onboardingFinished = event.data?.identifier;
-        listener(onboardingFinished);
-      } else if (event.event === 'Scate_PaywallScreenClosed') {
-        const paywallScreenClosed = event.data?.success;
-        listener(paywallScreenClosed);
-      } else if (event.event === 'Scate_OnboardingScreenClosed') {
-        const onboardingScreenClosed = event.data?.success;
-        listener(onboardingScreenClosed);
-      } else if (event.event === 'Scate_PaywallScreenFinished') {
-        const onboardingFinished = event.data?.identifier;
-        listener(onboardingFinished);
-      } else if (event.event === 'Scate_RestorePurchaseClicked') {
-        const restorePurchaseClicked = event.data?.success;
-        listener(restorePurchaseClicked);
       }
     }
   }
@@ -351,30 +327,6 @@ export class ScateSDK {
 
   public static OnboardingPaywallClosed() {
     return _ScateSDK.OnboardingPaywallClosed();
-  }
-
-  public static ShowPaywall(jsonString: string) {
-    return _ScateSDK.ShowPaywall(jsonString);
-  }
-
-  public static ShowOnboarding(jsonString: string) {
-    return _ScateSDK.ShowOnboarding(jsonString);
-  }
-
-  public static ClosePaywall() {
-    return _ScateSDK.ClosePaywall();
-  }
-
-  public static CloseOnboarding() {
-    return _ScateSDK.CloseOnboarding();
-  }
-
-  public static ShowPaidProductLoadingScreen() {
-    return _ScateSDK.ShowPaidProductLoadingScreen();
-  }
-
-  public static ClosePaidProductLoadingScreen() {
-    return _ScateSDK.ClosePaidProductLoadingScreen();
   }
 
   public static SubscriptionSuccess() {
