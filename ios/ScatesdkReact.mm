@@ -195,12 +195,6 @@ RCT_EXTERN_METHOD(OnboardingPaywallShown:(RCTPromiseResolveBlock)resolve
 RCT_EXTERN_METHOD(OnboardingPaywallClosed:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
-RCT_EXTERN_METHOD(ShowPaidProductLoadingScreen:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-
-RCT_EXTERN_METHOD(ClosePaidProductLoadingScreen:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
-
 RCT_EXTERN_METHOD(SubscriptionSuccess:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 

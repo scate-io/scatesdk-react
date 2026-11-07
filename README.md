@@ -313,15 +313,3 @@ ScateSDK.AllServicesInitialized();
 ScateSDK.ShowEventList();
 ```
 
-## Show Paid Product Loading Screen
-
-```js
-ScateSDK.ShowPaidProductLoadingScreen();
-```
-
-## Close Paid Product Loading Screen
-
-```js
-ScateSDK.ClosePaidProductLoadingScreen();
-```
-

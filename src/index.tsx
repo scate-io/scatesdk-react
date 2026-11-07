@@ -329,14 +329,6 @@ export class ScateSDK {
     return _ScateSDK.OnboardingPaywallClosed();
   }
 
-  public static ShowPaidProductLoadingScreen() {
-    return _ScateSDK.ShowPaidProductLoadingScreen();
-  }
-
-  public static ClosePaidProductLoadingScreen() {
-    return _ScateSDK.ClosePaidProductLoadingScreen();
-  }
-
   public static SubscriptionSuccess() {
     return _ScateSDK.SubscriptionSuccess();
   }

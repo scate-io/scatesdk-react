@@ -589,18 +589,6 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
     }
   }
 
-   @ReactMethod
-    public void ShowPaidProductLoadingScreen(Promise promise) {
-      // Empty implementation
-      promise.resolve(null);
-    }
-
-   @ReactMethod
-    public void ClosePaidProductLoadingScreen(Promise promise) {
-      // Empty implementation
-      promise.resolve(null);
-    }
-
   @ReactMethod
   public void GetSdkMetadata(Promise promise) {
     try {

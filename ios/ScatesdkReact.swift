@@ -362,18 +362,6 @@ class ScateSDK: RCTEventEmitter {
     resolve(nil)
   }
 
-  @objc(ShowPaidProductLoadingScreen:withRejecter:)
-  func ShowPaidProductLoadingScreen(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ShowPaidProductLoadingScreen()
-    resolve(nil)
-  }
-
-  @objc(ClosePaidProductLoadingScreen:withRejecter:)
-  func ClosePaidProductLoadingScreen(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-    ScateCoreSDK.ClosePaidProductLoadingScreen()
-    resolve(nil)
-  }
-
   @objc(SubscriptionSuccess:withRejecter:)
   func SubscriptionSuccess(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
     ScateCoreSDK.SubscriptionSuccess()
