@@ -589,30 +589,6 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public void ShowOnboarding(String jsonString, Promise promise) {
-    // Empty implementation
-    promise.resolve(null);
-  }
-
-  @ReactMethod
-  public void ShowPaywall(String jsonString, Promise promise) {
-    // Empty implementation
-    promise.resolve(null);
-  }
-
-  @ReactMethod
-  public void CloseOnboarding(Promise promise) {
-    // Empty implementation
-    promise.resolve(null);
-  }
-
-  @ReactMethod
-  public void ClosePaywall(Promise promise) {
-    // Empty implementation
-    promise.resolve(null);
-  }
-
    @ReactMethod
     public void ShowPaidProductLoadingScreen(Promise promise) {
       // Empty implementation

@@ -313,60 +313,15 @@ ScateSDK.AllServicesInitialized();
 ScateSDK.ShowEventList();
 ```
 
-## Onboarding And Paywall Screen Functions and Events
-
-## Show Paywall Screen
-
-- **Parameter:** `jsonString` — A JSON string containing the screen paywall configuration.
-- ⚠️ **Note:** You can find an example JSON object in the `example/src/App.tsx` file of the SDK repository.
-
-```js
-ScateSDK.ShowPaywall('jsonString');
-```
-
-## Close Paywall Screen
-
-```js
-ScateSDK.ClosePaywall();
-```
-
-## Show Onboarding Screen
-
-- **Parameter:** `jsonString` — A JSON string containing the onboarding configuration.
-- ⚠️ **Note:** You can find an example JSON object in the `example/src/App.tsx` file of the SDK repository.
-
-```js
-ScateSDK.ShowOnboarding('jsonString');
-```
-
-## Close Onboarding Screen
-
-```js
-ScateSDK.CloseOnboarding();
-```
-
 ## Show Paid Product Loading Screen
 
 ```js
 ScateSDK.ShowPaidProductLoadingScreen();
 ```
 
-## Close Paid Product Loading Screen Clicked On A Product In Onboarding Or Paywall Screens)
+## Close Paid Product Loading Screen
 
 ```js
 ScateSDK.ClosePaidProductLoadingScreen();
 ```
 
-## Paywall And Onboarding Screen Events
-
-```js
-ScateSDK.AddListener(
-  ScateEvents.ONBOARDING_SCREENS_FINISHED,
-  (identifier) => {}
-);
-ScateSDK.AddListener(ScateEvents.PAYWALL_SCREEN_FINISHED, (identifier) => {});
-ScateSDK.AddListener(ScateEvents.PAID_PRODUCT_CLICKED, (identifier) => {});
-ScateSDK.AddListener(ScateEvents.PAYWALL_SCREEN_CLOSED, (success) => {});
-ScateSDK.AddListener(ScateEvents.ONBOARDING_SCREEN_CLOSED, (success) => {});
-ScateSDK.AddListener(ScateEvents.RESTORE_PURCHASE_CLICKED, (success) => {});
-```
