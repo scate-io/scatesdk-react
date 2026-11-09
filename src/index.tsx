@@ -26,6 +26,8 @@ export enum ScateEvents {
 export type ScateInitOptions = {
   debug?: boolean;
   firebaseUserIdSyncEnabled?: boolean;
+  /** Keeps this user out of A/B tests, e.g. when a deep link opened the app. Matters on the first open. */
+  abOptOut?: boolean;
 };
 
 export type ScateAdjustOptions = {
@@ -61,6 +63,7 @@ export class ScateSDK {
     return _ScateSDK.Init(appID, {
       debug: options.debug ?? false,
       firebaseUserIdSyncEnabled: options.firebaseUserIdSyncEnabled ?? true,
+      abOptOut: options.abOptOut ?? false,
     });
   }
 

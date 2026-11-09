@@ -18,6 +18,10 @@ class ScateSDK: RCTEventEmitter {
       configuration.firebaseUserIdSyncEnabled = firebaseUserIdSyncEnabled
     }
 
+    if let abOptOut = options?["abOptOut"] as? Bool {
+      configuration.abOptOut = abOptOut
+    }
+
     configuration.sdkPlatform = "react-native"
     configuration.sdkPlatformVersion = ScatesdkReactVersion.value
 

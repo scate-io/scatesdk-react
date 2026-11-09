@@ -117,6 +117,14 @@ ScateSDK.Init('your app id', {
 });
 ```
 
+To keep a user out of A/B tests, for example when a deep link opened the app, pass `abOptOut: true`. The user still gets the app's remote config values. A user joins a test only on the first open, so call `Init` with the flag on that open, once the app knows how it was opened (for example after `Linking.getInitialURL()`); a user already in a test keeps their variant.
+
+```js
+ScateSDK.Init('your app id', {
+  abOptOut: openedFromDeepLink,
+});
+```
+
 ### Send Events
 
 To send events, you can use the following code:
