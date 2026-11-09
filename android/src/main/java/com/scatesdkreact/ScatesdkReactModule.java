@@ -40,12 +40,14 @@ public class ScatesdkReactModule extends ReactContextBaseJavaModule {
       if (options != null && options.hasKey("debug")) {
         debug = options.getBoolean("debug");
       }
+      boolean abOptOut = options != null && options.hasKey("abOptOut") && options.getBoolean("abOptOut");
       ScateCoreSDK.debug = debug;
       ScateCoreSDK.init(
         appID,
         reactContext.getApplicationContext(),
         BuildConfig.INTEGRATION,
-        BuildConfig.REACT_SDK_VERSION
+        BuildConfig.REACT_SDK_VERSION,
+        abOptOut
       );
       promise.resolve(null);
     } catch (Exception e) {

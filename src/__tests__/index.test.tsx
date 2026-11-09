@@ -6,6 +6,7 @@ describe('ScateSDK.Event', () => {
       EventWithValueAndParameters: jest.fn(),
       GetAdjustId: jest.fn(),
       GetUserID: jest.fn(),
+      Init: jest.fn(),
       InitAdjust: jest.fn(),
     };
 
@@ -117,6 +118,30 @@ describe('ScateSDK.Event', () => {
 
     expect(mockScateSDK.InitAdjust).toHaveBeenCalledWith('adjust-token', {
       noATT: true,
+    });
+  });
+
+  it('initializes with abOptOut disabled by default', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+
+    ScateSDK.Init('app-id');
+
+    expect(mockScateSDK.Init).toHaveBeenCalledWith('app-id', {
+      debug: false,
+      firebaseUserIdSyncEnabled: true,
+      abOptOut: false,
+    });
+  });
+
+  it('passes abOptOut through to native initialization', () => {
+    const { ScateSDK, mockScateSDK } = loadScateSDK();
+
+    ScateSDK.Init('app-id', { abOptOut: true });
+
+    expect(mockScateSDK.Init).toHaveBeenCalledWith('app-id', {
+      debug: false,
+      firebaseUserIdSyncEnabled: true,
+      abOptOut: true,
     });
   });
 
